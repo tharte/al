@@ -10,5 +10,4 @@
 #' ID(\(a) a)        # α-equivalence 
 #' ID(\(x) \(y) x)   # identity of Boolean truth is Boolean truth
 #' ID(\(x) \(y) y)   # identity of Boolean falsity is Boolean falsity
-#' foo_function()
 `ID`<- \(x) x
