@@ -7,7 +7,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' to.logical(true) # TRUE
+#' .to.logical(true) # TRUE
 `true`<- \(x) \(y) x
 
 
@@ -20,7 +20,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' to.logical(false) # FALSE
+#' .to.logical(false) # FALSE
 `false`<- \(x) \(y) y
 
 
@@ -33,10 +33,10 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' to.logical(and(false)(false)) # FALSE
-#' to.logical(and(false)(true))  # FALSE
-#' to.logical(and(true)(false))  # FALSE
-#' to.logical(and(true)(true))   # TRUE
+#' .to.logical(and(false)(false)) # FALSE
+#' .to.logical(and(false)(true))  # FALSE
+#' .to.logical(and(true)(false))  # FALSE
+#' .to.logical(and(true)(true))   # TRUE
 `and`<- \(x) \(y) x(y)(false)
 
 
@@ -49,10 +49,10 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' to.logical(or(false)(false)) # FALSE
-#' to.logical(or(false)(true))  # TRUE
-#' to.logical(or(true)(false))  # TRUE
-#' to.logical(or(true)(true))   # TRUE
+#' .to.logical(or(false)(false)) # FALSE
+#' .to.logical(or(false)(true))  # TRUE
+#' .to.logical(or(true)(false))  # TRUE
+#' .to.logical(or(true)(true))   # TRUE
 `or`<- \(x) \(y) x(true)(y)
 
 
@@ -64,6 +64,6 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' to.logical(not(false)) # FALSE
-#' to.logical(not(true))  # TRUE
+#' .to.logical(not(false)) # FALSE
+#' .to.logical(not(true))  # TRUE
 `not`<- \(x) x(false)(true)
