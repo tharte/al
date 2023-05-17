@@ -2,11 +2,11 @@ Package: al
 Title: An implementation of the Lambda Calculus in R
 Version: 0.0.1
 Authors@R: person("Thomas P.", "Harte", , "tharte@cantab.net", role = c("aut", "cre"))
-Description: R is based on Scheme and S, so that it has the appearance of S
-    but is implemented similar to Scheme. Scheme is "An Interpreter for Extended Lambda Calculus".
+Description: R is based on S and Scheme: syntactically, R has the appearance of S,
+    but its implementation is similar to Scheme. Scheme is "An Interpreter for Extended Lambda Calculus".
     Insight into the Lambda Calculus from within R therefore gives us a fresh understanding
     of R's roots in functional programming. The Lambda Calculus was created by the 
-    American logician Alonzo Church in the 1930s; hence, 'al' is named in his honor.
+    American logician Alonzo Church; 'al' is named in his honor.
 License: `use_mit_license()`
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

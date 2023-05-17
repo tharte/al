@@ -15,3 +15,15 @@ test_that("branching combinator works", {
   expect_identical(IF(true)(.a)(.b), .a)
   expect_identical(IF(false)(.a)(.b), .b)
 })
+
+test_that("Church-encoded numerals work", {
+#  expect_equal(.to.integer(add(`_0_`)(`_1_`)), as.integer(1))
+#  expect_equal(.to.integer(add(`_0_`)(`_2_`)), as.integer(2))  
+#  expect_equal(.to.integer(add(`_0_`)(`_3_`)), as.integer(3))  
+   expect_equal(.to.integer(`_0_`), as.integer(0))
+   expect_equal(.to.integer(`_1_`), as.integer(1))
+   expect_equal(.to.integer(`_2_`), as.integer(2))
+   expect_equal(.to.integer(`_3_`), as.integer(3))
+})
+
+
