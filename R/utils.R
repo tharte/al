@@ -6,7 +6,7 @@
 #' @export
 #' @examples
 #' .to.integer(`_0_`)  # == 0 (i.e. as.integer(0))
-#' .to.integer(`_1_1)  # == 1 (i.e. as.integer(1))
+#' .to.integer(`_1_`)  # == 1 (i.e. as.integer(1))
 `.to.integer`<- \(n) n(\(x) x+1)(0)
 
 
