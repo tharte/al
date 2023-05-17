@@ -1,6 +1,6 @@
 #' Convert commensurate Lambda Calculus expression to integer
 #'
-#' @param x input
+#' @param n input
 #' @return integer
 #' @author Thomas P. Harte
 #' @export
@@ -12,7 +12,7 @@
 
 #' Convert commensurate Lambda Calculus expression to logical
 #'
-#' @param x input
+#' @param b input
 #' @return logical
 #' @author Thomas P. Harte
 #' @export

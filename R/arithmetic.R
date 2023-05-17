@@ -1,9 +1,8 @@
 #' Add operator 
 #'
-#' λnm.(m succ)n
+#' \eqn{\lambda nm.(m\mbox{succ})n}
 #' @param n left operand
-#' @param m right operand
-#' @return n + m 
+#' @return function: n + m 
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -21,10 +20,9 @@
 
 #' Subtraction operator 
 #'
-#' λnm.(m pred)n
+#' \eqn{\lambda nm.(m\mbox{pred})n}
 #' @param n left operand
-#' @param m right operand
-#' @return n + m 
+#' @return function: n - m 
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -42,10 +40,9 @@
 
 #' Multiplication operator 
 #'
-#' λnm.m(add n)C0
+#' \eqn{\lambda nm.m(\mbox{add})n)C0}
 #' @param n left operand
-#' @param m right operand
-#' @return n * m 
+#' @return function: n * m 
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -55,10 +52,9 @@
 
 #' Exponentiation operator 
 #'
-#' λnm.mn
+#' \eqn{\lambda nm.mn}
 #' @param n left operand
-#' @param m right operand
-#' @return n^m
+#' @return function: n^m
 #' @author Thomas P. Harte
 #' @export
 #' @examples
