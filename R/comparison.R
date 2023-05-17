@@ -53,3 +53,22 @@
 #' .to.logical(lt(C2)(C1)) # FALSE
 #' .to.logical(lt(C2)(C2)) # FALSE
 `eq`<- \(n) \(m) and(le(n)(m))(le(m)(n))
+
+
+#' Greater than or equal to
+#'
+#' @param n input
+#' @return T or F
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.logical(ge(C0)(C0)) # TRUE
+#' .to.logical(ge(C1)(C1)) # TRUE
+#' .to.logical(ge(C1)(C2)) # FALSE
+#' .to.logical(ge(C2)(C1)) # TRUE
+#' .to.logical(ge(C2)(C2)) # TRUE
+#' .to.logical(ge(C3)(C3)) # TRUE
+#' .to.logical(ge(C4)(C3)) # TRUE
+#' .to.logical(ge(C3)(C4)) # FALSE
+#' .to.logical(ge(C4)(C4)) # TRUE
+`ge`<- \(n) \(m) `zerop?`(n(pred)(m))

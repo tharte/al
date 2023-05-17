@@ -32,3 +32,15 @@ test_that("eq (strictly equal to) works", {
     expect_identical(.to.logical(eq(C3)(C4)), FALSE)
     expect_identical(.to.logical(eq(C4)(C4)), TRUE)
 })
+
+test_that("ge (strictly equal to) works", {
+    expect_identical(.to.logical(ge(C0)(C0)), TRUE)
+    expect_identical(.to.logical(ge(C1)(C1)), TRUE)
+    expect_identical(.to.logical(ge(C1)(C2)), FALSE)
+    expect_identical(.to.logical(ge(C2)(C1)), TRUE)
+    expect_identical(.to.logical(ge(C2)(C2)), TRUE)
+    expect_identical(.to.logical(ge(C3)(C3)), TRUE)
+    expect_identical(.to.logical(ge(C4)(C3)), TRUE)
+    expect_identical(.to.logical(ge(C3)(C4)), FALSE)
+    expect_identical(.to.logical(ge(C4)(C4)), TRUE)
+})
