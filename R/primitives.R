@@ -140,7 +140,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' .to.integer(add(C1)(C3))  # as.integer(4)
+#' .to.integer(add(C1)(C3))  # as.integer(5)
 `C5`<-  add(C2)(C3)
 
 
@@ -152,5 +152,41 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' .to.integer(add(C1)(C3))  # as.integer(4)
+#' .to.integer(add(C1)(C3))  # as.integer(6)
 `C6`<-  mul(C2)(C3)
+
+
+#' Church-Encoded Numeral: 7
+#'
+#' @param f input (function)
+#' @param x input 
+#' @return succ(succ(succ(succ(succ(succ(C1))))))
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(add(C0)(C6))  # as.integer(7)
+`C7`<- succ(succ(succ(succ(succ(succ(C1))))))
+
+
+#' Church-Encoded Numeral: 8
+#'
+#' @param f input (function)
+#' @param x input 
+#' @return pred(mul(C3)(c3))
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(add(C2)(C6))  # as.integer(8)
+`C8`<- pred(mul(C3)(C3))
+
+
+#' Church-Encoded Numeral: 9
+#'
+#' @param f input (function)
+#' @param x input 
+#' @return exp(C3)(C2)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(mul(C3)(C3))  # as.integer(9)
+`C9`<- exp(C3)(C2)
