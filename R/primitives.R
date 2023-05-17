@@ -84,3 +84,17 @@ C2<- \(f) \(x) f(f(x))
 C3<- \(f) \(x) f(f(f(x)))
 
 
+#' Successor Combinator
+#'
+#' λ nfx.f((nf)x)
+#' @param n input 
+#' @param f input 
+#' @param x input 
+#' @return f((nf)x)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' succ(C0)  # C1
+#' succ(C1)  # C2
+#' succ(C2)  # C3
+succ<- \(n) \(f) \(x) f(n(f)(x))
