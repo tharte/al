@@ -1,0 +1,10 @@
+# test_that("`zerop?` works", {
+test_that("zerop? works", {
+    expect_identical(.to.logical(`zerop?`(C0)), TRUE)
+    expect_identical(.to.logical(`zerop?`(C1)), FALSE)
+    expect_identical(.to.logical(`zerop?`(C2)), FALSE)
+    expect_identical(.to.logical(`zerop?`(sub(C2)(C2))), TRUE)
+    expect_identical(.to.logical(`zerop?`(sub(C3)(C2))), FALSE)
+    expect_identical(.to.logical(`zerop?`(sub(C3)(C3))), TRUE)
+})
+
