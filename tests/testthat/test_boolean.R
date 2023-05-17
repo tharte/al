@@ -12,9 +12,15 @@ test_that("Boolean AND works", {
 })
 
 # OR: truth table
-test_that("Boolean AND works", {
+test_that("Boolean OR works", {
   expect_identical(or(false)(false), false)
   expect_identical(or(false)(true),  true)
   expect_identical(or(true)(false),  true)
   expect_identical(or(true)(true),   true)
+})
+
+# NOT: truth table
+test_that("Boolean NOT works", {
+  expect_identical(not(false), true)
+  expect_identical(not(true),  false)
 })

@@ -40,3 +40,16 @@
 #' @author Thomas P. Harte
 #' @export
 `or`<- \(x) \(y) x(true)(y)
+
+
+#' Boolean combinator: logical NOT
+#'
+#' \lambda xy.xFT
+#' @param x input
+#' @return x(false)(true)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' not(false) # true
+#' not(true)  # false
+`not`<- \(x) x(false)(true)
