@@ -2,8 +2,7 @@
 #'
 #' \eqn{\lambda nm.(m\mbox{succ})n}
 #' @param n left operand
-#' @param m right operand
-#' @return n + m 
+#' @return function: n + m 
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -23,8 +22,7 @@
 #'
 #' \eqn{\lambda nm.(m\mbox{pred})n}
 #' @param n left operand
-#' @param m right operand
-#' @return n - m 
+#' @return function: n - m 
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -44,8 +42,7 @@
 #'
 #' \eqn{\lambda nm.m(\mbox{add})n)C0}
 #' @param n left operand
-#' @param m right operand
-#' @return n * m 
+#' @return function: n * m 
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -57,8 +54,7 @@
 #'
 #' \eqn{\lambda nm.mn}
 #' @param n left operand
-#' @param m right operand
-#' @return n^m
+#' @return function: n^m
 #' @author Thomas P. Harte
 #' @export
 #' @examples

@@ -2,8 +2,7 @@
 #'
 #' \eqn{T}
 #' @param x input
-#' @param y input
-#' @return x first input
+#' @return function: first input
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -15,8 +14,7 @@
 #'
 #' \eqn{F}
 #' @param x input
-#' @param y input
-#' @return y second input
+#' @return function: second input
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -28,8 +26,7 @@
 #'
 #' \eqn{\lambda xy.xyF}
 #' @param x input
-#' @param y input
-#' @return x(y)(false)
+#' @return function: x(y)(false)
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -44,8 +41,7 @@
 #'
 #' \eqn{\lambda xy.xTy}
 #' @param x input
-#' @param y input
-#' @return x(true)(y)
+#' @return function: x(true)(y)
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -60,7 +56,7 @@
 #'
 #' \eqn{\lambda xy.xFT}
 #' @param x input
-#' @return x(false)(true)
+#' @return function: x(false)(true)
 #' @author Thomas P. Harte
 #' @export
 #' @examples

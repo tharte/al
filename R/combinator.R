@@ -1,7 +1,8 @@
 #' Y-combinator: Curry's paradoxical combinator
 #'
 #' \eqn{\lambda f.(\lambda x.(f\lambda y.xxy))(\lambda x.(f\lambda y.xxy))}
-#' @param function 
+#' @param f function
+#' @return function
 #' @author Thomas P. Harte
 #' @export
 #' @examples

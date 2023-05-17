@@ -2,7 +2,7 @@
 #'
 #' \eqn{\lambda n.n(\lambda m.F)T}
 #' @param n input
-#' @return T or F
+#' @return function: T or F
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -17,7 +17,7 @@
 #'
 #' \eqn{\lambda nm.\mbox{zerop?}(\mbox{sub}(n)(m))}
 #' @param n input
-#' @return T or F
+#' @return function: T or F
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -32,7 +32,7 @@
 #'
 #' \eqn{\lambda nm.\mbox{and}(\mbox{le}(n)(m))(\mbox{not}(\mbox{zerop?}(n(\mbox{pred}(m)))))}
 #' @param n input
-#' @return T or F
+#' @return function: T or F
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -47,7 +47,7 @@
 #'
 #' \eqn{\lambda nm.\mbox{and}(\mbox{le}(n)(m))(\mbox{le}(n)(m))}
 #' @param n input
-#' @return T or F
+#' @return function: T or F
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -62,7 +62,7 @@
 #'
 #' \eqn{\lambda nm.\mbox{zerop?}(n(\mbox{pred})(m))}
 #' @param n input
-#' @return T or F
+#' @return function: T or F
 #' @author Thomas P. Harte
 #' @export
 #' @examples
