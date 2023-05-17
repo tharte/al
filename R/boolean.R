@@ -1,4 +1,4 @@
-#' Boolean Truth
+#' Boolean truth
 #'
 #' T
 #' @param x input
@@ -9,7 +9,7 @@
 `true`<- \(x) \(y) x
 
 
-#' Boolean Falsity
+#' Boolean falsity
 #'
 #' F
 #' @param x input
@@ -22,7 +22,7 @@
 
 #' Boolean combinator: logical AND
 #'
-#' \lambda xy.xyF
+#' λ xy.xyF
 #' @param x input
 #' @param y input
 #' @return x(y)(false)
@@ -33,7 +33,7 @@
 
 #' Boolean combinator: logical OR
 #'
-#' \lambda xy.xTy
+#' λ xy.xTy
 #' @param x input
 #' @param y input
 #' @return x(true)(y)
@@ -44,7 +44,7 @@
 
 #' Boolean combinator: logical NOT
 #'
-#' \lambda xy.xFT
+#' λ xy.xFT
 #' @param x input
 #' @return x(false)(true)
 #' @author Thomas P. Harte

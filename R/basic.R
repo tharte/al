@@ -1,8 +1,8 @@
 #' Identity Combinator
 #'
-#' \lambda x.x
+#' λ x.x
 #' @param x input
-#' @return x its input
+#' @return x (i.e. the input)
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -15,7 +15,7 @@
 
 #' Branching Combinator
 #'
-#' \lambda pxy.pxy
+#' λ pxy.pxy
 #' @param p input (condition)
 #' @param x input (if)
 #' @param y input (else)
