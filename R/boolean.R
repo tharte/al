@@ -1,6 +1,6 @@
 #' Boolean truth
 #'
-#' T
+#' \eqn{T}
 #' @param x input
 #' @param y input
 #' @return x first input
@@ -13,7 +13,7 @@
 
 #' Boolean falsity
 #'
-#' F
+#' \eqn{F}
 #' @param x input
 #' @param y input
 #' @return y second input
@@ -26,7 +26,7 @@
 
 #' Boolean combinator: logical AND
 #'
-#' λxy.xyF
+#' \eqn{\lambda xy.xyF}
 #' @param x input
 #' @param y input
 #' @return x(y)(false)
@@ -42,7 +42,7 @@
 
 #' Boolean combinator: logical OR
 #'
-#' λxy.xTy
+#' \eqn{\lambda xy.xTy}
 #' @param x input
 #' @param y input
 #' @return x(true)(y)
@@ -58,7 +58,7 @@
 
 #' Boolean combinator: logical NOT
 #'
-#' λxy.xFT
+#' \eqn{\lambda xy.xFT}
 #' @param x input
 #' @return x(false)(true)
 #' @author Thomas P. Harte

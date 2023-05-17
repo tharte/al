@@ -1,6 +1,6 @@
 #' Identity Combinator
 #'
-#' λx.x
+#' \eqn{\lambda x.x}
 #' @param x input
 #' @return x (i.e. the input)
 #' @author Thomas P. Harte
@@ -15,7 +15,7 @@
 
 #' Branching Combinator
 #'
-#' λpxy.pxy
+#' \eqn{\lambda pxy.pxy}
 #' @param p input (condition)
 #' @param x input (if)
 #' @param y input (else)
@@ -30,7 +30,7 @@
 
 #' Church-Encoded Numeral: 0
 #'
-#' λfx.x
+#' \eqn{\lambda fx.x}
 #' @param f input (function)
 #' @param x input 
 #' @return x (apply f to x ZERO times)
@@ -44,7 +44,7 @@
 
 #' Church-Encoded Numeral: 1
 #'
-#' λfx.fx
+#' \eqn{\lambda fx.fx}
 #' @param f input (function)
 #' @param x input 
 #' @return f(x) (apply f to x ONCE)
@@ -58,7 +58,7 @@
 
 #' Church-Encoded Numeral: 2
 #'
-#' λfx.f(fx)
+#' \eqn{\lambda fx.f(fx)}
 #' @param f input (function)
 #' @param x input 
 #' @return f(f(x)) (apply f to x TWICE)
@@ -72,7 +72,7 @@
 
 #' Church-Encoded Numeral: 3
 #'
-#' λfx.f(f(f(x)))
+#' \eqn{\lambda fx.f(f(fx))}
 #' @param f input (function)
 #' @param x input 
 #' @return f(f(f(x))) (apply f to x THRICE)
@@ -86,7 +86,7 @@
 
 #' Successor Combinator
 #'
-#' λnfx.f((nf)x)
+#' \eqn{\lambda nfx.f((nf)x)}
 #' @param n input 
 #' @param f input 
 #' @param x input 
@@ -102,7 +102,7 @@
 
 #' Predecessor Combinator
 #'
-#' TODO
+#' \eqn{\lambda n.n\lambda p.\lambda z.(\mbox{succ}(p(\mbox{true})))(p(\mbox{true}))(\lambda z.z(C0)(C0))(\mbox{false})}
 #' @param n input 
 #' @param p input 
 #' @param z input 
@@ -122,6 +122,7 @@
 
 #' Church-Encoded Numeral: 4
 #'
+#' \eqn{\lambda fx.f(f(f(fx)))}
 #' @param f input (function)
 #' @param x input 
 #' @return succ(C3)
@@ -134,6 +135,7 @@
 
 #' Church-Encoded Numeral: 5
 #'
+#' \eqn{\lambda fx.f(f(f(f(fx))))}
 #' @param f input (function)
 #' @param x input 
 #' @return add(C2)(C3)
@@ -146,6 +148,7 @@
 
 #' Church-Encoded Numeral: 6
 #'
+#' \eqn{\lambda fx.f(f(f(f(f(fx)))))}
 #' @param f input (function)
 #' @param x input 
 #' @return add(C2)(C3)
@@ -158,6 +161,7 @@
 
 #' Church-Encoded Numeral: 7
 #'
+#' \eqn{\lambda fx.f(f(f(f(f(f(fx))))))}
 #' @param f input (function)
 #' @param x input 
 #' @return succ(succ(succ(succ(succ(succ(C1))))))
@@ -170,6 +174,7 @@
 
 #' Church-Encoded Numeral: 8
 #'
+#' \eqn{\lambda fx.f(f(f(f(f(f(f(fx)))))))}
 #' @param f input (function)
 #' @param x input 
 #' @return pred(mul(C3)(c3))
@@ -182,6 +187,7 @@
 
 #' Church-Encoded Numeral: 9
 #'
+#' \eqn{\lambda fx.f(f(f(f(f(f(f(f(fx))))))))}
 #' @param f input (function)
 #' @param x input 
 #' @return exp(C3)(C2)
@@ -194,6 +200,7 @@
 
 #' Church-Encoded Numeral: 10
 #'
+#' \eqn{\lambda fx.f(f(f(f(f(f(f(f(f(fx)))))))))}
 #' @param f input (function)
 #' @param x input 
 #' @return sub(add(C8)(C3))(C1)

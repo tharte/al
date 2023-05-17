@@ -1,6 +1,6 @@
 #' `zerop?` test zero-ness
 #'
-#' λn.n(λm.F)T
+#' \eqn{\lambda n.n(\lambda m.F)T}
 #' @param n input
 #' @return T or F
 #' @author Thomas P. Harte
@@ -15,6 +15,7 @@
 
 #' Less than or equal to
 #'
+#' \eqn{\lambda nm.\mbox{zerop?}(\mbox{sub}(n)(m))}
 #' @param n input
 #' @return T or F
 #' @author Thomas P. Harte
@@ -29,6 +30,7 @@
 
 #' (Strictly) Less than
 #'
+#' \eqn{\lambda nm.\mbox{and}(\mbox{le}(n)(m))(\mbox{not}(\mbox{zerop?}(n(\mbox{pred}(m)))))}
 #' @param n input
 #' @return T or F
 #' @author Thomas P. Harte
@@ -43,6 +45,7 @@
 
 #' Equal to
 #'
+#' \eqn{\lambda nm.\mbox{and}(\mbox{le}(n)(m))(\mbox{le}(n)(m))}
 #' @param n input
 #' @return T or F
 #' @author Thomas P. Harte
@@ -57,6 +60,7 @@
 
 #' Greater than or equal to
 #'
+#' \eqn{\lambda nm.\mbox{zerop?}(n(\mbox{pred})(m))}
 #' @param n input
 #' @return T or F
 #' @author Thomas P. Harte
