@@ -7,3 +7,11 @@ test_that("identity combinator works", {
   expect_identical(ID(.true), .true)     # identity of Boolean truth is Boolean truth
   expect_identical(ID(.false), .false)   # identity of Boolean falsity is Boolean falsity
 })
+
+test_that("branching combinator works", {
+    .a<-   \(a) a
+    .b<-   \(b) b
+    
+  expect_identical(IF(true)(.a)(.b), .a)
+  expect_identical(IF(false)(.a)(.b), .b)
+})
