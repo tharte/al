@@ -26,7 +26,7 @@
 
 #' Boolean combinator: logical AND
 #'
-#' λ xy.xyF
+#' λxy.xyF
 #' @param x input
 #' @param y input
 #' @return x(y)(false)
@@ -42,7 +42,7 @@
 
 #' Boolean combinator: logical OR
 #'
-#' λ xy.xTy
+#' λxy.xTy
 #' @param x input
 #' @param y input
 #' @return x(true)(y)
@@ -58,7 +58,7 @@
 
 #' Boolean combinator: logical NOT
 #'
-#' λ xy.xFT
+#' λxy.xFT
 #' @param x input
 #' @return x(false)(true)
 #' @author Thomas P. Harte

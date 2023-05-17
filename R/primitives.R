@@ -1,6 +1,6 @@
 #' Identity Combinator
 #'
-#' λ x.x
+#' λx.x
 #' @param x input
 #' @return x (i.e. the input)
 #' @author Thomas P. Harte
@@ -15,7 +15,7 @@
 
 #' Branching Combinator
 #'
-#' λ pxy.pxy
+#' λpxy.pxy
 #' @param p input (condition)
 #' @param x input (if)
 #' @param y input (else)
@@ -30,7 +30,7 @@
 
 #' Church-Encoded Numeral: 0
 #'
-#' λ fx.x
+#' λfx.x
 #' @param f input (function)
 #' @param x input 
 #' @return x (apply f to x ZERO times)
@@ -44,7 +44,7 @@ C0<- \(f) \(x) x
 
 #' Church-Encoded Numeral: 1
 #'
-#' λ fx.fx
+#' λfx.fx
 #' @param f input (function)
 #' @param x input 
 #' @return f(x) (apply f to x ONCE)
@@ -58,7 +58,7 @@ C1<- \(f) \(x) f(x)
 
 #' Church-Encoded Numeral: 2
 #'
-#' λ fx.f(fx)
+#' λfx.f(fx)
 #' @param f input (function)
 #' @param x input 
 #' @return f(f(x)) (apply f to x TWICE)
@@ -72,7 +72,7 @@ C2<- \(f) \(x) f(f(x))
 
 #' Church-Encoded Numeral: 3
 #'
-#' λ fx.f(f(f(x)))
+#' λfx.f(f(f(x)))
 #' @param f input (function)
 #' @param x input 
 #' @return f(f(f(x))) (apply f to x THRICE)
@@ -86,7 +86,7 @@ C3<- \(f) \(x) f(f(f(x)))
 
 #' Successor Combinator
 #'
-#' λ nfx.f((nf)x)
+#' λnfx.f((nf)x)
 #' @param n input 
 #' @param f input 
 #' @param x input 
