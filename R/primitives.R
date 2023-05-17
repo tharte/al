@@ -23,8 +23,8 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' if(true)(\(a) a)(\(b) b)
-#' if(false)(\(a) a)(\(b) b)
+#' IF(true)(\(a) a)(\(b) b)
+#' IF(false)(\(a) a)(\(b) b)
 `IF`<- \(p) \(x) \(y) p(x)(y)
 
 
