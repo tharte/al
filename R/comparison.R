@@ -39,3 +39,17 @@
 #' .to.logical(lt(C2)(C1)) # FALSE
 #' .to.logical(lt(C2)(C2)) # FALSE
 `lt`<- \(n) \(m) and(le(n)(m)) (not(`zerop?`(n(pred)(m))))
+
+
+#' Equal to
+#'
+#' @param n input
+#' @return T or F
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.logical(lt(C1)(C1)) # FALSE
+#' .to.logical(lt(C1)(C2)) # TRUE
+#' .to.logical(lt(C2)(C1)) # FALSE
+#' .to.logical(lt(C2)(C2)) # FALSE
+`eq`<- \(n) \(m) and(le(n)(m))(le(m)(n))
