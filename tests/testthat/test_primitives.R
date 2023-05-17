@@ -36,5 +36,14 @@ test_that("Successor combinator works", {
 #   expect_equal(succ(succ(succ(C0))), C3)
 })
 
+test_that("Predecessor combinator works", {
+   expect_equal(.to.integer(pred(succ(C0))), 0)
+   expect_equal(.to.integer(pred(succ(C1))), 1)
+   expect_equal(.to.integer(pred(succ(C2))), 2)
+   expect_equal(.to.integer(pred(succ(C3))), 3)
+})
+
+
+
 
 

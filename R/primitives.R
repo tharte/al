@@ -98,3 +98,23 @@ C3<- \(f) \(x) f(f(f(x)))
 #' succ(C1)  # C2
 #' succ(C2)  # C3
 succ<- \(n) \(f) \(x) f(n(f)(x))
+
+
+#' Predecessor Combinator
+#'
+#' TODO
+#' @param n input 
+#' @param p input 
+#' @param z input 
+#' @return predecessor
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' pred(C1)  # C0
+#' pred(C2)  # C1
+#' pred(C3)  # C2
+#' .to.integer(pred(succ(C0)))  # C0
+#' .to.integer(pred(succ(C1)))  # C1
+#' .to.integer(pred(succ(C2)))  # C2
+#' .to.integer(pred(succ(C3)))  # C3
+pred<- \(n) n(\(p) \(z) z(succ(p(true)))(p(true)))(\(z) z(C0)(C0))(false)
