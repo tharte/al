@@ -51,3 +51,18 @@
 #' @examples
 #' .to.integer(mul(C0)(C0)) # as.integer(0))
 `mul`<- \(n) \(m) m(add(n))(C0)
+
+
+#' Exponentiation operator 
+#'
+#' λnm.mn
+#' @param n left operand
+#' @param m right operand
+#' @return n^m
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(exp(C2)(C1)) # as.integer(2))
+#' .to.integer(exp(C2)(C2)) # as.integer(4))
+#' .to.integer(exp(C2)(C3)) # as.integer(8))
+`exp`<- \(n) \(m) m(n)
