@@ -11,3 +11,18 @@
 #' ID(\(x) \(y) x)   # identity of Boolean truth is Boolean truth
 #' ID(\(x) \(y) y)   # identity of Boolean falsity is Boolean falsity
 `ID`<- \(x) x
+
+
+#' Branching Combinator
+#'
+#' \lambda pxy.pxy
+#' @param p input (condition)
+#' @param x input (if)
+#' @param y input (else)
+#' @return conditional output
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' if(true)(\(a) a)(\(b) b)
+#' if(false)(\(a) a)(\(b) b)
+`IF`<- \(p) \(x) \(y) p(x)(y)
