@@ -17,13 +17,13 @@ test_that("branching combinator works", {
 })
 
 test_that("Church-encoded numerals work", {
-#  expect_equal(.to.integer(add(`_0_`)(`_1_`)), as.integer(1))
-#  expect_equal(.to.integer(add(`_0_`)(`_2_`)), as.integer(2))  
-#  expect_equal(.to.integer(add(`_0_`)(`_3_`)), as.integer(3))  
-   expect_equal(.to.integer(`_0_`), as.integer(0))
-   expect_equal(.to.integer(`_1_`), as.integer(1))
-   expect_equal(.to.integer(`_2_`), as.integer(2))
-   expect_equal(.to.integer(`_3_`), as.integer(3))
+#  expect_equal(.to.integer(add(C0)(C1)), as.integer(1))
+#  expect_equal(.to.integer(add(C0)(C2)), as.integer(2))  
+#  expect_equal(.to.integer(add(C0)(C3)), as.integer(3))  
+   expect_equal(.to.integer(C0), as.integer(0))
+   expect_equal(.to.integer(C1), as.integer(1))
+   expect_equal(.to.integer(C2), as.integer(2))
+   expect_equal(.to.integer(C3), as.integer(3))
 })
 
 

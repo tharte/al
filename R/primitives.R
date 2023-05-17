@@ -37,9 +37,9 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' .to.integer(add(`_0_`)(`_1_`))  # as.integer(1)
-#' .to.integer(sub(`_2_`)(`_2_`))  # as.integer(0)
-`_0_`<- \(f) \(x) x
+#' .to.integer(add(C0)(C1))  # as.integer(1)
+#' .to.integer(sub(C2)(C2))  # as.integer(0)
+C0<- \(f) \(x) x
 
 
 #' Church-Encoded Numeral: 1
@@ -51,9 +51,9 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' .to.integer(add(`_0_`)(`_1_`))  # as.integer(1)
-#' .to.integer(add(`_1_`)(`_2_`))  # as.integer(3)
-`_1_`<- \(f) \(x) f(x)
+#' .to.integer(add(C0)(C1))  # as.integer(1)
+#' .to.integer(add(C1)(C2))  # as.integer(3)
+C1<- \(f) \(x) f(x)
 
 
 #' Church-Encoded Numeral: 2
@@ -65,9 +65,9 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' .to.integer(sub(`_2_`)(`_1_`))  # as.integer(1)
-#' .to.integer(add(`_1_`)(`_2_`))  # as.integer(3)
-`_2_`<- \(f) \(x) f(f(x))
+#' .to.integer(sub(C2)(C1))  # as.integer(1)
+#' .to.integer(add(C1)(C2))  # as.integer(3)
+C2<- \(f) \(x) f(f(x))
 
 
 #' Church-Encoded Numeral: 3
@@ -79,9 +79,8 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' .to.integer(add(`_0_`)(`_3_`))  # as.integer(3)
-#' .to.integer(sub(`_3_`)(`_1_`))  # as.integer(2)
-`_3_`<- \(f) \(x) f(f(f(x)))
-
+#' .to.integer(add(C0)(C3))  # as.integer(3)
+#' .to.integer(sub(C3)(C1))  # as.integer(2)
+C3<- \(f) \(x) f(f(f(x)))
 
 
