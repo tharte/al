@@ -39,7 +39,7 @@
 #' @examples
 #' .to.integer(add(C0)(C1))  # as.integer(1)
 #' .to.integer(sub(C2)(C2))  # as.integer(0)
-C0<- \(f) \(x) x
+`C0`<- \(f) \(x) x
 
 
 #' Church-Encoded Numeral: 1
@@ -53,7 +53,7 @@ C0<- \(f) \(x) x
 #' @examples
 #' .to.integer(add(C0)(C1))  # as.integer(1)
 #' .to.integer(add(C1)(C2))  # as.integer(3)
-C1<- \(f) \(x) f(x)
+`C1`<- \(f) \(x) f(x)
 
 
 #' Church-Encoded Numeral: 2
@@ -67,7 +67,7 @@ C1<- \(f) \(x) f(x)
 #' @examples
 #' .to.integer(sub(C2)(C1))  # as.integer(1)
 #' .to.integer(add(C1)(C2))  # as.integer(3)
-C2<- \(f) \(x) f(f(x))
+`C2`<- \(f) \(x) f(f(x))
 
 
 #' Church-Encoded Numeral: 3
@@ -81,7 +81,7 @@ C2<- \(f) \(x) f(f(x))
 #' @examples
 #' .to.integer(add(C0)(C3))  # as.integer(3)
 #' .to.integer(sub(C3)(C1))  # as.integer(2)
-C3<- \(f) \(x) f(f(f(x)))
+`C3`<- \(f) \(x) f(f(f(x)))
 
 
 #' Successor Combinator
@@ -97,7 +97,7 @@ C3<- \(f) \(x) f(f(f(x)))
 #' succ(C0)  # C1
 #' succ(C1)  # C2
 #' succ(C2)  # C3
-succ<- \(n) \(f) \(x) f(n(f)(x))
+`succ`<- \(n) \(f) \(x) f(n(f)(x))
 
 
 #' Predecessor Combinator
@@ -117,4 +117,16 @@ succ<- \(n) \(f) \(x) f(n(f)(x))
 #' .to.integer(pred(succ(C1)))  # C1
 #' .to.integer(pred(succ(C2)))  # C2
 #' .to.integer(pred(succ(C3)))  # C3
-pred<- \(n) n(\(p) \(z) z(succ(p(true)))(p(true)))(\(z) z(C0)(C0))(false)
+`pred`<- \(n) n(\(p) \(z) z(succ(p(true)))(p(true)))(\(z) z(C0)(C0))(false)
+
+
+#' Church-Encoded Numeral: 4
+#'
+#' @param f input (function)
+#' @param x input 
+#' @return succ(C3)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(add(C1)(C3))  # as.integer(4)
+`C4`<-  succ(C3)
