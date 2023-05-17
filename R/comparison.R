@@ -27,7 +27,7 @@
 `le`<- \(n) \(m) `zerop?`(sub(n)(m))
 
 
-#' (Strictly) Greater than
+#' (Strictly) Less than
 #'
 #' @param n input
 #' @return T or F
