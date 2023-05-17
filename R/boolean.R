@@ -22,10 +22,21 @@
 
 #' Boolean combinator: logical AND
 #'
-#' \lambda xy.x
+#' \lambda xy.xyF
 #' @param x input
 #' @param y input
 #' @return x(y)(false)
 #' @author Thomas P. Harte
 #' @export
 `and`<- \(x) \(y) x(y)(false)
+
+
+#' Boolean combinator: logical OR
+#'
+#' \lambda xy.xTy
+#' @param x input
+#' @param y input
+#' @return x(true)(y)
+#' @author Thomas P. Harte
+#' @export
+`or`<- \(x) \(y) x(true)(y)

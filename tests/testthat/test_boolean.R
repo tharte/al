@@ -10,3 +10,11 @@ test_that("Boolean AND works", {
   expect_identical(and(true)(false),  false)
   expect_identical(and(true)(true),   true)
 })
+
+# OR: truth table
+test_that("Boolean AND works", {
+  expect_identical(or(false)(false), false)
+  expect_identical(or(false)(true),  true)
+  expect_identical(or(true)(false),  true)
+  expect_identical(or(true)(true),   true)
+})
