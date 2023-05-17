@@ -190,3 +190,15 @@
 #' @examples
 #' .to.integer(mul(C3)(C3))  # as.integer(9)
 `C9`<- exp(C3)(C2)
+
+
+#' Church-Encoded Numeral: 10
+#'
+#' @param f input (function)
+#' @param x input 
+#' @return sub(add(C8)(C3))(C1)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(add(C6)(C4))  # as.integer(10)
+`C10`<- sub(add(C8)(C3))(C1)

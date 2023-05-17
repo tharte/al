@@ -29,6 +29,8 @@ test_that("Church-encoded numerals work", {
     expect_equal(.to.integer(C6), as.integer(6))
     expect_equal(.to.integer(C7), as.integer(7))
     expect_equal(.to.integer(C8), as.integer(8))
+    expect_equal(.to.integer(C9), as.integer(9))
+    expect_equal(.to.integer(C10), as.integer(10))
 })
 
 test_that("Successor combinator works", {
