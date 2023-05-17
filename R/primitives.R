@@ -131,6 +131,7 @@
 #' .to.integer(add(C1)(C3))  # as.integer(4)
 `C4`<-  succ(C3)
 
+
 #' Church-Encoded Numeral: 5
 #'
 #' @param f input (function)
@@ -142,3 +143,14 @@
 #' .to.integer(add(C1)(C3))  # as.integer(4)
 `C5`<-  add(C2)(C3)
 
+
+#' Church-Encoded Numeral: 6
+#'
+#' @param f input (function)
+#' @param x input 
+#' @return add(C2)(C3)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(add(C1)(C3))  # as.integer(4)
+`C6`<-  mul(C2)(C3)
