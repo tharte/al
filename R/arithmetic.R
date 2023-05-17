@@ -38,3 +38,16 @@
 #' .to.integer(add(C2)(C3)) # as.integer(5))
 #' .to.integer(add(C3)(C2)) # as.integer(5))
 `sub`<- \(n) \(m) m(pred)(n)
+
+
+#' Multiplication operator 
+#'
+#' λnm.m(add n)C0
+#' @param n left operand
+#' @param m right operand
+#' @return n * m 
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(mul(C0)(C0)) # as.integer(0))
+`mul`<- \(n) \(m) m(add(n))(C0)
