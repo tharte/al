@@ -64,7 +64,6 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' @examples
 #' to.logical(not(false)) # FALSE
 #' to.logical(not(true))  # TRUE
 `not`<- \(x) x(false)(true)
