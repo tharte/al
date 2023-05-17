@@ -15,7 +15,6 @@
 
 #' Less than or equal to
 #'
-#' λn.n(λm.F)T
 #' @param n input
 #' @return T or F
 #' @author Thomas P. Harte
@@ -26,3 +25,17 @@
 #' .to.logical(le(C2)(C1))
 #' .to.logical(le(C2)(C2))
 `le`<- \(n) \(m) `zerop?`(sub(n)(m))
+
+
+#' (Strictly) Greater than
+#'
+#' @param n input
+#' @return T or F
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.logical(lt(C1)(C1)) # FALSE
+#' .to.logical(lt(C1)(C2)) # TRUE
+#' .to.logical(lt(C2)(C1)) # FALSE
+#' .to.logical(lt(C2)(C2)) # FALSE
+`lt`<- \(n) \(m) and(le(n)(m)) (not(`zerop?`(n(pred)(m))))

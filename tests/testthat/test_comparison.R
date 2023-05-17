@@ -13,3 +13,10 @@ test_that("le works", {
     expect_identical(.to.logical(le(C2)(C1)), FALSE)
     expect_identical(.to.logical(le(C2)(C2)), TRUE)
 })
+
+test_that("lt works", {
+    expect_identical(.to.logical(lt(C1)(C1)), FALSE)
+    expect_identical(.to.logical(lt(C1)(C2)), TRUE)
+    expect_identical(.to.logical(lt(C2)(C1)), FALSE)
+    expect_identical(.to.logical(lt(C2)(C2)), FALSE)
+})
