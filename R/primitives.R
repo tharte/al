@@ -34,6 +34,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C0)           # as.integer(0)
 #' .to.integer(add(C0)(C1))  # as.integer(1)
 #' .to.integer(sub(C2)(C2))  # as.integer(0)
 `C0`<- \(f) \(x) x
@@ -47,6 +48,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C1)           # as.integer(1)
 #' .to.integer(add(C0)(C1))  # as.integer(1)
 #' .to.integer(add(C1)(C2))  # as.integer(3)
 `C1`<- \(f) \(x) f(x)
@@ -60,6 +62,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C2)           # as.integer(2)
 #' .to.integer(sub(C2)(C1))  # as.integer(1)
 #' .to.integer(add(C1)(C2))  # as.integer(3)
 `C2`<- \(f) \(x) f(f(x))
@@ -73,9 +76,102 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C3)           # as.integer(3)
 #' .to.integer(add(C0)(C3))  # as.integer(3)
 #' .to.integer(sub(C3)(C1))  # as.integer(2)
 `C3`<- \(f) \(x) f(f(f(x)))
+
+
+#' Church-Encoded Numeral: 4
+#'
+#' \eqn{\lambda fx.f(f(f(fx)))}
+#' @param f input (function)
+#' @return function: f(f(f(f(x)))) (apply f to x FOUR TIMES)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(C4)           # as.integer(4)
+#' .to.integer(add(C1)(C3))  # as.integer(4)
+`C4`<- \(f) \(x) f(f(f(f(x))))
+
+
+#' Church-Encoded Numeral: 5
+#'
+#' \eqn{\lambda fx.f(f(f(f(fx))))}
+#' @param f input (function)
+#' @return function: f(f(f(f(f(x))))) (apply f to x FIVE TIMES)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(C5)           # as.integer(5)
+#' .to.integer(add(C2)(C3))  # as.integer(5)
+`C5`<- \(f) \(x) f(f(f(f(f(x)))))
+
+
+#' Church-Encoded Numeral: 6
+#'
+#' \eqn{\lambda fx.f(f(f(f(f(fx)))))}
+#' @param f input (function)
+#' @return function: f(f(f(f(f(f(x)))))) (apply f to x SIX TIMES)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(C6)           # as.integer(6)
+#' .to.integer(mul(C2)(C3))  # as.integer(6)
+`C6`<- \(f) \(x) f(f(f(f(f(f(x))))))
+
+
+#' Church-Encoded Numeral: 7
+#'
+#' \eqn{\lambda fx.f(f(f(f(f(f(fx))))))}
+#' @param f input (function)
+#' @return function: f(f(f(f(f(f(f(x))))))) (apply f to x SEVEN TIMES)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(C7)           # as.integer(7)
+#' .to.integer(add(C1)(C6))  # as.integer(7)
+`C7`<- \(f) \(x) f(f(f(f(f(f(f(x)))))))
+
+
+#' Church-Encoded Numeral: 8
+#'
+#' \eqn{\lambda fx.f(f(f(f(f(f(f(fx)))))))}
+#' @param f input (function)
+#' @return function: f(f(f(f(f(f(f(f(x)))))))) (apply f to x EIGHT TIMES)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(C8)           # as.integer(8)
+#' .to.integer(add(C2)(C6))  # as.integer(8)
+`C8`<- \(f) \(x) f(f(f(f(f(f(f(f(x))))))))
+
+
+#' Church-Encoded Numeral: 9
+#'
+#' \eqn{\lambda fx.f(f(f(f(f(f(f(f(fx))))))))}
+#' @param f input (function)
+#' @return function: f(f(f(f(f(f(f(f(f(x))))))))) (apply f to x NINE TIMES)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(C9)           # as.integer(9)
+#' .to.integer(mul(C3)(C3))  # as.integer(9)
+`C9`<- \(f) \(x) f(f(f(f(f(f(f(f(f(x)))))))))
+
+
+#' Church-Encoded Numeral: 10
+#'
+#' \eqn{\lambda fx.f(f(f(f(f(f(f(f(f(fx)))))))))}
+#' @param f input (function)
+#' @return function: f(f(f(f(f(f(f(f(f(f(x)))))))))) (apply f to x TEN TIMES)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(C10)                   # as.integer(10)
+#' .to.integer(add(C6)(C4))           # as.integer(10)
+#' .to.integer(sub(add(C8)(C3))(C1))  # as.integer(10)
+`C10`<- \(f) \(x) f(f(f(f(f(f(f(f(f(f(x))))))))))
 
 
 #' Successor Combinator
@@ -108,79 +204,3 @@
 #' .to.integer(pred(succ(C2)))  # C2
 #' .to.integer(pred(succ(C3)))  # C3
 `pred`<- \(n) n(\(p) \(z) z(succ(p(true)))(p(true)))(\(z) z(C0)(C0))(false)
-
-
-#' Church-Encoded Numeral: 4
-#'
-#' \eqn{\lambda fx.f(f(f(fx)))}
-#' @return function: succ(C3)
-#' @author Thomas P. Harte
-#' @export
-#' @examples
-#' .to.integer(add(C1)(C3))  # as.integer(4)
-`C4`<-  succ(C3)
-
-
-#' Church-Encoded Numeral: 5
-#'
-#' \eqn{\lambda fx.f(f(f(f(fx))))}
-#' @return function: add(C2)(C3)
-#' @author Thomas P. Harte
-#' @export
-#' @examples
-#' .to.integer(add(C1)(C3))  # as.integer(5)
-`C5`<-  add(C2)(C3)
-
-
-#' Church-Encoded Numeral: 6
-#'
-#' \eqn{\lambda fx.f(f(f(f(f(fx)))))}
-#' @return function: add(C2)(C3)
-#' @author Thomas P. Harte
-#' @export
-#' @examples
-#' .to.integer(add(C1)(C3))  # as.integer(6)
-`C6`<-  mul(C2)(C3)
-
-
-#' Church-Encoded Numeral: 7
-#'
-#' \eqn{\lambda fx.f(f(f(f(f(f(fx))))))}
-#' @return function: succ(succ(succ(succ(succ(succ(C1))))))
-#' @author Thomas P. Harte
-#' @export
-#' @examples
-#' .to.integer(add(C0)(C6))  # as.integer(7)
-`C7`<- succ(succ(succ(succ(succ(succ(C1))))))
-
-
-#' Church-Encoded Numeral: 8
-#'
-#' \eqn{\lambda fx.f(f(f(f(f(f(f(fx)))))))}
-#' @return function: pred(mul(C3)(c3))
-#' @author Thomas P. Harte
-#' @export
-#' @examples
-#' .to.integer(add(C2)(C6))  # as.integer(8)
-`C8`<- pred(mul(C3)(C3))
-
-
-#' Church-Encoded Numeral: 9
-#'
-#' \eqn{\lambda fx.f(f(f(f(f(f(f(f(fx))))))))}
-#' @return function: exp(C3)(C2)
-#' @author Thomas P. Harte
-#' @export
-#' @examples
-#' .to.integer(mul(C3)(C3))  # as.integer(9)
-`C9`<- exp(C3)(C2)
-
-
-#' Church-Encoded Numeral: 10
-#'
-#' \eqn{\lambda fx.f(f(f(f(f(f(f(f(f(fx)))))))))}
-#' @author Thomas P. Harte
-#' @export
-#' @examples
-#' .to.integer(add(C6)(C4))  # as.integer(10)
-`C10`<- sub(add(C8)(C3))(C1)

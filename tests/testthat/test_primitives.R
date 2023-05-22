@@ -50,3 +50,13 @@ test_that("Predecessor combinator works", {
     expect_equal(.to.integer(pred(succ(C3))), 3)
 })
 
+test_that("Primitives work to alternatively define Church numerals", {
+    expect_equal(.to.integer(succ(C3)), 4)
+    expect_equal(.to.integer(add(C2)(C3)), 5)
+    expect_equal(.to.integer(mul(C2)(C3)), 6)
+    expect_equal(.to.integer(succ(succ(succ(succ(succ(succ(C1))))))), 7)
+    expect_equal(.to.integer(pred(mul(C3)(C3))), 8)
+    expect_equal(.to.integer(exp(C3)(C2)), 9)
+    expect_equal(.to.integer(sub(add(C8)(C3))(C1)), 10)
+})
+
