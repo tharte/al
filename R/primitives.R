@@ -85,6 +85,7 @@
 #' Church-Encoded Numeral: 4
 #'
 #' \eqn{\lambda fx.f(f(f(fx)))}
+#' @param f input (function)
 #' @return function: f(f(f(f(x)))) (apply f to x FOUR TIMES)
 #' @author Thomas P. Harte
 #' @export
@@ -97,6 +98,7 @@
 #' Church-Encoded Numeral: 5
 #'
 #' \eqn{\lambda fx.f(f(f(f(fx))))}
+#' @param f input (function)
 #' @return function: f(f(f(f(f(x))))) (apply f to x FIVE TIMES)
 #' @author Thomas P. Harte
 #' @export
@@ -109,6 +111,7 @@
 #' Church-Encoded Numeral: 6
 #'
 #' \eqn{\lambda fx.f(f(f(f(f(fx)))))}
+#' @param f input (function)
 #' @return function: f(f(f(f(f(f(x)))))) (apply f to x SIX TIMES)
 #' @author Thomas P. Harte
 #' @export
@@ -121,6 +124,7 @@
 #' Church-Encoded Numeral: 7
 #'
 #' \eqn{\lambda fx.f(f(f(f(f(f(fx))))))}
+#' @param f input (function)
 #' @return function: f(f(f(f(f(f(f(x))))))) (apply f to x SEVEN TIMES)
 #' @author Thomas P. Harte
 #' @export
@@ -133,6 +137,7 @@
 #' Church-Encoded Numeral: 8
 #'
 #' \eqn{\lambda fx.f(f(f(f(f(f(f(fx)))))))}
+#' @param f input (function)
 #' @return function: f(f(f(f(f(f(f(f(x)))))))) (apply f to x EIGHT TIMES)
 #' @author Thomas P. Harte
 #' @export
@@ -145,6 +150,7 @@
 #' Church-Encoded Numeral: 9
 #'
 #' \eqn{\lambda fx.f(f(f(f(f(f(f(f(fx))))))))}
+#' @param f input (function)
 #' @return function: f(f(f(f(f(f(f(f(f(x))))))))) (apply f to x NINE TIMES)
 #' @author Thomas P. Harte
 #' @export
@@ -157,6 +163,7 @@
 #' Church-Encoded Numeral: 10
 #'
 #' \eqn{\lambda fx.f(f(f(f(f(f(f(f(f(fx)))))))))}
+#' @param f input (function)
 #' @return function: f(f(f(f(f(f(f(f(f(f(x)))))))))) (apply f to x TEN TIMES)
 #' @author Thomas P. Harte
 #' @export

@@ -1,6 +1,6 @@
 Package: al
 Title: An implementation of the Lambda Calculus in R
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: person("Thomas P.", "Harte", , "tharte@cantab.net", role = c("aut", "cre"))
 Description: R is based on S and Scheme: syntactically, R has the appearance of S,
     but its implementation is similar to Scheme. Scheme is "An Interpreter for Extended Lambda Calculus".
