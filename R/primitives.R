@@ -126,7 +126,7 @@
 #' @export
 #' @examples
 #' .to.integer(C7)           # as.integer(7)
-#' .to.integer(add(C0)(C6))  # as.integer(7)
+#' .to.integer(add(C1)(C6))  # as.integer(7)
 `C7`<- \(f) \(x) f(f(f(f(f(f(f(x)))))))
 
 
