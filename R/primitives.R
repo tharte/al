@@ -90,6 +90,17 @@
 `C4`<- \(f) \(x) f(f(f(f(x))))
 
 
+#' Church-Encoded Numeral: 5
+#'
+#' \eqn{\lambda fx.f(f(f(f(fx))))}
+#' @return function: add(C2)(C3)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(add(C1)(C3))  # as.integer(5)
+`C5`<- \(f) \(x) f(f(f(f(f(x)))))
+
+
 #' Successor Combinator
 #'
 #' \eqn{\lambda nfx.f((nf)x)}
@@ -120,17 +131,6 @@
 #' .to.integer(pred(succ(C2)))  # C2
 #' .to.integer(pred(succ(C3)))  # C3
 `pred`<- \(n) n(\(p) \(z) z(succ(p(true)))(p(true)))(\(z) z(C0)(C0))(false)
-
-
-#' Church-Encoded Numeral: 5
-#'
-#' \eqn{\lambda fx.f(f(f(f(fx))))}
-#' @return function: add(C2)(C3)
-#' @author Thomas P. Harte
-#' @export
-#' @examples
-#' .to.integer(add(C1)(C3))  # as.integer(5)
-`C5`<-  add(C2)(C3)
 
 
 #' Church-Encoded Numeral: 6
