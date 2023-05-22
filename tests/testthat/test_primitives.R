@@ -50,3 +50,7 @@ test_that("Predecessor combinator works", {
     expect_equal(.to.integer(pred(succ(C3))), 3)
 })
 
+test_that("Primitives work to alternatively define Church numerals", {
+    expect_equal(.to.integer(succ(C3)), 4)
+})
+
