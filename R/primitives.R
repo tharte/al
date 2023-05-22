@@ -62,6 +62,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C2)           # as.integer(2)
 #' .to.integer(sub(C2)(C1))  # as.integer(1)
 #' .to.integer(add(C1)(C2))  # as.integer(3)
 `C2`<- \(f) \(x) f(f(x))
@@ -148,6 +149,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C9)           # as.integer(9)
 #' .to.integer(mul(C3)(C3))  # as.integer(9)
 `C9`<- \(f) \(x) f(f(f(f(f(f(f(f(f(x)))))))))
 
@@ -163,6 +165,7 @@
 #' .to.integer(add(C6)(C4))           # as.integer(10)
 #' .to.integer(sub(add(C8)(C3))(C1))  # as.integer(10)
 `C10`<- \(f) \(x) f(f(f(f(f(f(f(f(f(f(x))))))))))
+
 
 #' Successor Combinator
 #'
