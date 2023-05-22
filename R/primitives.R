@@ -81,7 +81,7 @@
 #' Church-Encoded Numeral: 4
 #'
 #' \eqn{\lambda fx.f(f(f(fx)))}
-#' @return function: succ(C3)
+#' @return function: f(f(f(f(x)))) (apply f to x FOUR TIMES)
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -93,7 +93,7 @@
 #' Church-Encoded Numeral: 5
 #'
 #' \eqn{\lambda fx.f(f(f(f(fx))))}
-#' @return function: add(C2)(C3)
+#' @return function: f(f(f(f(f(x))))) (apply f to x FIVE TIMES)
 #' @author Thomas P. Harte
 #' @export
 #' @examples
@@ -104,10 +104,11 @@
 #' Church-Encoded Numeral: 6
 #'
 #' \eqn{\lambda fx.f(f(f(f(f(fx)))))}
-#' @return function
+#' @return function: f(f(f(f(f(f(x)))))) (apply f to x SIX TIMES)
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C6)           # as.integer(6)
 #' .to.integer(add(C1)(C3))  # as.integer(6)
 `C6`<- \(f) \(x) f(f(f(f(f(f(x))))))
 
