@@ -134,7 +134,7 @@
 #' @examples
 #' .to.integer(C8)           # as.integer(8)
 #' .to.integer(add(C2)(C6))  # as.integer(8)
-`C8`<- pred(mul(C3)(C3))
+`C8`<- \(f) \(x) f(f(f(f(f(f(f(f(x))))))))
 
 
 #' Successor Combinator
