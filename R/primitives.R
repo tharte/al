@@ -113,7 +113,7 @@
 #' @export
 #' @examples
 #' .to.integer(C6)           # as.integer(6)
-#' .to.integer(add(C1)(C3))  # as.integer(6)
+#' .to.integer(mul(C2)(C3))  # as.integer(6)
 `C6`<- \(f) \(x) f(f(f(f(f(f(x))))))
 
 
