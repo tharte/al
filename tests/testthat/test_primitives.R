@@ -57,5 +57,6 @@ test_that("Primitives work to alternatively define Church numerals", {
     expect_equal(.to.integer(succ(succ(succ(succ(succ(succ(C1))))))), 7)
     expect_equal(.to.integer(pred(mul(C3)(C3))), 8)
     expect_equal(.to.integer(exp(C3)(C2)), 9)
+    expect_equal(.to.integer(sub(add(C8)(C3))(C1)), 10)
 })
 

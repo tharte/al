@@ -152,6 +152,18 @@
 `C9`<- \(f) \(x) f(f(f(f(f(f(f(f(f(x)))))))))
 
 
+#' Church-Encoded Numeral: 10
+#'
+#' \eqn{\lambda fx.f(f(f(f(f(f(f(f(f(fx)))))))))}
+#' @return function: f(f(f(f(f(f(f(f(f(f(x)))))))))) (apply f to x TEN TIMES)
+#' @author Thomas P. Harte
+#' @export
+#' @examples
+#' .to.integer(C10)                   # as.integer(10)
+#' .to.integer(add(C6)(C4))           # as.integer(10)
+#' .to.integer(sub(add(C8)(C3))(C1))  # as.integer(10)
+`C10`<- \(f) \(x) f(f(f(f(f(f(f(f(f(f(x))))))))))
+
 #' Successor Combinator
 #'
 #' \eqn{\lambda nfx.f((nf)x)}
@@ -182,13 +194,3 @@
 #' .to.integer(pred(succ(C2)))  # C2
 #' .to.integer(pred(succ(C3)))  # C3
 `pred`<- \(n) n(\(p) \(z) z(succ(p(true)))(p(true)))(\(z) z(C0)(C0))(false)
-
-
-#' Church-Encoded Numeral: 10
-#'
-#' \eqn{\lambda fx.f(f(f(f(f(f(f(f(f(fx)))))))))}
-#' @author Thomas P. Harte
-#' @export
-#' @examples
-#' .to.integer(add(C6)(C4))  # as.integer(10)
-`C10`<- sub(add(C8)(C3))(C1)
