@@ -34,6 +34,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C0)           # as.integer(0)
 #' .to.integer(add(C0)(C1))  # as.integer(1)
 #' .to.integer(sub(C2)(C2))  # as.integer(0)
 `C0`<- \(f) \(x) x
@@ -47,6 +48,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C1)           # as.integer(1)
 #' .to.integer(add(C0)(C1))  # as.integer(1)
 #' .to.integer(add(C1)(C2))  # as.integer(3)
 `C1`<- \(f) \(x) f(x)
@@ -73,6 +75,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C3)           # as.integer(3)
 #' .to.integer(add(C0)(C3))  # as.integer(3)
 #' .to.integer(sub(C3)(C1))  # as.integer(2)
 `C3`<- \(f) \(x) f(f(f(x)))
@@ -97,6 +100,7 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' .to.integer(C5)           # as.integer(5)
 #' .to.integer(add(C1)(C3))  # as.integer(5)
 `C5`<- \(f) \(x) f(f(f(f(f(x)))))
 
