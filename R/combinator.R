@@ -1,11 +1,12 @@
 #' Y-combinator: Curry's paradoxical combinator
 #'
-#' \eqn{\lambda f.(\lambda x.(f\lambda y.xxy))(\lambda x.(f\lambda y.xxy))}
+#' \eqn{\lambda f.(\lambda x.(f \lambda y.xxy))(\lambda x.(f \lambda y.xxy))}
 #' @param f function
 #' @return function
 #' @author Thomas P. Harte
 #' @export
 #' @examples
+#' # [FIXME] for some reason this won't execute with example(Y)
 #' Y(\(r) \(n)
 #'       `zerop?`(n)(C0)
 #'       (`IF`(eq(n)(C1))
