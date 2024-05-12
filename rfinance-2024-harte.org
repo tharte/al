@@ -1,0 +1,85 @@
+# -*- org-confirm-babel-evaluate: nil -*- 
+#+title:     A Cunning Plan
+#+author:    
+#+subtitle:   The Lambda Calculus, Lisp, Scheme, and R
+#+date:    
+#+language:   en
+#+options:    H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+options:    TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+
+#+startup: beamer
+#+latex_class: beamer
+#+beamer_frame_level: 2
+#+latex_class_options: [9pt]
+
+#+latex_header:  \mode<beamer>{\usetheme[progressbar=frametitle]{metropolis}}
+#+latex_header:  \usepackage{minted}
+#+latex_header:  \usemintedstyle{colorful}
+#+latex_header:  \usepackage[linesnumbered,ruled]{algorithm2e}
+#+options:       tex:imagemagick
+#+bind:          org-latex-image-default-width 0.5\linewidth $
+#+bind:          org-latex-prefer-user-labels t
+
+#+include:       /home/tharte/dot/include/newcommands.tex src latex
+#+latex_header:  \newtheorem{defn}{Definition}[section]
+#+latex_header:  \newtheorem{remark}{Remark}[section]
+#+latex_header:  \usetikzlibrary{positioning}
+#+latex_header:  \usetikzlibrary{shadows}
+#+latex_header:  \usetikzlibrary{arrows}
+#+latex_header:  \usetikzlibrary{matrix}
+
+#+latex_header:  \usepackage{textgreek}
+#+latex_header:  \usepackage[makeroom]{cancel}
+
+#+latex_header:  \definecolor{lightgreen}{HTML}{90EE90}
+#+latex_header:  \definecolor{lightblue}{rgb}{0.94,0.94,0.95}
+
+# make the counter algocf overlay aware (e.g. when using algorithm2e with onslide)
+# Source:    https://tex.stackexchange.com/questions/226929/making-algorithm2e-environments-overlay-aware-in-beamer
+#+latex_header:  \resetcounteronoverlays{algocf}
+
+#+latex_header: \author{Thomas P.~Harte}
+#+latex_header: \institute{R/Finance 2024-05-18 \\ University of Illinois at Chicago}
+
+# Source: https://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex
+#+latex_header:  \def\checkmark{\textcolor{green}{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}}
+
+
+
+# 
+# SET-UP
+#
+#+BEGIN_SRC R :session :exports none :results silent :eval no
+source("/home/tharte/dot/stats/cache/rfinance-2019/rfinance-2019-functions.R")
+.init.proj(set.proj.dir=TRUE)
+#+END_SRC
+
+
+* Disclaimer
+** Disclaimer
+#+begin_export latex
+    Thomas P. Harte (``the Author'') is providing
+    this presentation and its contents (``the Content'') for educational
+    purposes only at the \emph{R in Finance Conference\/}, 2024-05-18,
+    Chicago, IL.  The Author is not a registered investment advisor,
+    nor does the Author purport to offer investment advice,
+    nor business advice. The opinions expressed in the Content 
+    belong solely to the Author, and do not necessarily represent the 
+    opinions of the Author's employers, nor any 
+    organization, committee or other group with which the Author
+    is affiliated.
+\newline \newline
+    THE AUTHOR SPECIFICALLY DISCLAIMS ANY PERSONAL LIABILITY, LOSS OR RISK
+    INCURRED AS A CONSEQUENCE OF THE USE AND APPLICATION, EITHER DIRECTLY
+    OR INDIRECTLY, OF THE CONTENT. THE AUTHOR SPECIFICALLY DISCLAIMS ANY
+    REPRESENTATION, WHETHER EXPLICIT OR IMPLIED, THAT APPLYING THE CONTENT
+    WILL LEAD TO SIMILAR RESULTS IN A BUSINESS SETTING. THE RESULTS PRESENTED
+    IN THE CONTENT ARE NOT NECESSARILY TYPICAL AND SHOULD NOT DETERMINE
+    EXPECTATIONS OF FINANCIAL OR BUSINESS RESULTS.
+#+end_export
+
+* Overview
+* References 
+ 
+#+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
+
