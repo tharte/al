@@ -187,12 +187,48 @@ Y(\(r) \(n)
     #+RESULTS:
     : [1] 9
 
-** Haskell
+** Haskell: ~Int~
+- Mathematics: constrain $x$
+  
+  $$x \mapsto x^2,\quad\forall x\in\NN$$
+
+- \onslide<2-> type is metadata
+
+    #+begin_src haskell :exports both :results output :eval no
+    :{
+      sq :: Int -> Int
+      sq = \x -> x^2
+    :}
+    sq 3
+    #+end_src
+
+    #+RESULTS:
+    : 9
+
+** Haskell: ~Double~
 - Mathematics: constrain $x$
   
   $$x \mapsto x^2,\quad\forall x\in\RR$$
 
-- \onslide<2-> Haskell has type
+- \onslide<2-> type is metadata
+
+    #+begin_src haskell :exports both :results output :eval no
+    :{
+      sq :: Double -> Double
+      sq = \x -> x^2
+    :}
+    sq 3
+    #+end_src
+
+    #+RESULTS:
+    : 9.0
+
+** Haskell: ~Num~
+- Mathematics: what if there is no constraint on $x$?
+  
+  $$x \mapsto x^2,\quad\forall x\in\;???$$
+
+- \onslide<2-> Haskell infers type
 
     #+begin_src haskell :exports both :results output :eval no
     :type \x -> x^2
@@ -241,6 +277,55 @@ Y(\(r) \(n)
     instance Num Int -- Defined in ‘GHC.Num’
     instance Num Float -- Defined in ‘GHC.Float’
     instance Num Double -- Defined in ‘GHC.Float’
+    #+end_example
+    #+LATEX: }
+
+** Haskell: What is ~Int~?
+- ~Int~ is a /data constructor/: it is an /instance/ of type class ~Num~
+
+    #+begin_src haskell :exports both :results output :eval no
+    :info Int
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+RESULTS:
+    #+begin_example
+    data Int = GHC.Types.I# GHC.Prim.Int# 	-- Defined in ‘GHC.Types’
+    instance Eq Int -- Defined in ‘GHC.Classes’
+    instance Ord Int -- Defined in ‘GHC.Classes’
+    instance Enum Int -- Defined in ‘GHC.Enum’
+    instance Num Int -- Defined in ‘GHC.Num’
+    instance Real Int -- Defined in ‘GHC.Real’
+    instance Show Int -- Defined in ‘GHC.Show’
+    instance Integral Int -- Defined in ‘GHC.Real’
+    instance Bounded Int -- Defined in ‘GHC.Enum’
+    instance Read Int -- Defined in ‘GHC.Read’
+    #+end_example
+    #+LATEX: }
+
+** Haskell: What is ~Double~?
+- ~Double~ is a /data constructor/: it is an /instance/ of type class ~Num~
+
+    #+begin_src haskell :exports both :results output :eval no
+    :info Double
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+RESULTS:
+    #+begin_example
+    data Double = GHC.Types.D# GHC.Prim.Double#
+	    -- Defined in ‘GHC.Types’
+    instance Eq Double -- Defined in ‘GHC.Classes’
+    instance Ord Double -- Defined in ‘GHC.Classes’
+    instance Enum Double -- Defined in ‘GHC.Float’
+    instance Floating Double -- Defined in ‘GHC.Float’
+    instance Fractional Double -- Defined in ‘GHC.Float’
+    instance Num Double -- Defined in ‘GHC.Float’
+    instance Real Double -- Defined in ‘GHC.Float’
+    instance RealFloat Double -- Defined in ‘GHC.Float’
+    instance RealFrac Double -- Defined in ‘GHC.Float’
+    instance Show Double -- Defined in ‘GHC.Float’
+    instance Read Double -- Defined in ‘GHC.Read’
     #+end_example
     #+LATEX: }
 
