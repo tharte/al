@@ -543,6 +543,24 @@ Y(\(r) \(n)
       \onslide<9->
       $$b$$
 
+** Divergence: non-terminating $\lambda$ expressions
+- \onslide<2-> consider
+
+      $$(\lambda x. xx)(\lambda x. xx)$$
+      
+      \onslide<3->
+      $$\lambda [x:= (\lambda x. xx)]. xx$$
+
+      \onslide<4->
+      $$(\lambda x. xx)(\lambda x. xx)$$
+      
+- \onslide<5-> 
+
+  some $\lambda$ expressions clearly disallow reduction to normal form:
+  such $\lambda$ expressions /diverge/ 
+
+- \onslide<6-> the $\lambda$ expression $(\lambda x. xx)(\lambda x. xx)$ is called ``omega''
+
 ** Backus-Naur Form
 #+begin_src haskell :exports both :results output :eval yes
 (\x -> x^2) 3
