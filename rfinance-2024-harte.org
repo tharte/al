@@ -371,6 +371,33 @@ Y(\(r) \(n)
     #+RESULTS:
     : \(x) x
 
+** Lambda terms
+- \onslide<2-> Lambda Calculus has three basic components, or /lambda terms/
+
+  1. \onslide<3-> $\lambda$ expressions
+  2. \onslide<4-> variables
+  3. \onslide<5-> abstractions
+     
+- \onslide<6-> $\lambda$ expressions form a superset $\Lambda$
+
+  \onslide<7->
+  $$\mbox{$\lambda$ expressions} \supset \{ \mbox{variables}, \mbox{abstractions} \}$$
+
+- \onslide<8-> variables
+
+  + \onslide<9-> no meaning or value
+  + \onslide<10-> just a /name/ for an input to a function
+  + \onslide<11-> /e.g./ $x$, $y$, $z$
+
+- \onslide<12-> abstractions
+
+  + \onslide<13-> an abstraction is a /function/ (usually called a "lambda")
+  + \onslide<14-> two parts (separated by a dot):
+    $$\underbrace{\lambda x}_{\mbox{\scriptsize head}}. \underbrace{x}_{\mbox{\scriptsize body}}$$
+  + \onslide<15-> the body is a $\lambda$ expression
+    \onslide<16->
+    $$\underbrace{\lambda x}_{\mbox{\scriptsize head}}. \underbrace{\mbox{$\lambda$ expression}}_{\mbox{\scriptsize body}}$$
+
 ** Backus-Naur Form
 #+begin_src haskell :exports both :results output :eval yes
 (\x -> x^2) 3
