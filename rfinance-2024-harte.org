@@ -398,6 +398,31 @@ Y(\(r) \(n)
     \onslide<16->
     $$\underbrace{\lambda x}_{\mbox{\scriptsize head}}. \underbrace{\mbox{$\lambda$ expression}}_{\mbox{\scriptsize body}}$$
 
+** Application
+- \onslide<2-> the action part of Lambda Calculus: evaluate (/i.e./ reduce) lambda terms
+
+  + \onslide<3-> bind the parameter to the concrete argument
+
+    \onslide<4->
+    $$(\lambda\underbrace{x}_{\mbox{\scriptsize parameter}}. \underbrace{x}_{\mbox{\scriptsize body}})\,\underbrace{1}_{\mbox{\scriptsize argument}}$$
+
+  + \onslide<5-> the argument is the specific lambda term that the abstraction (/i.e./ the lambda) is applied to
+
+  + \onslide<6-> a /computation/ is the repeated application of lambdas to arguments until there are no applications left to perform
+
+- \onslide<7-> simplest example of computation: the identity
+
+    $$(\lambda x. x)\,1$$
+
+    \onslide<8->
+    $$(\lambda\underbrace{x}_{\mbox{\scriptsize parameter}}. \underbrace{x}_{\mbox{\scriptsize body}})\,\underbrace{1}_{\mbox{\scriptsize argument}}$$
+
+    \onslide<9->
+    $$\lambda\underbrace{1}_{\mbox{\scriptsize parameter}}. \underbrace{1}_{\mbox{\scriptsize body}}$$
+
+    \onslide<10->
+    $$\underbrace{1}_{\mbox{\scriptsize reduced}}$$
+     
 ** Backus-Naur Form
 #+begin_src haskell :exports both :results output :eval yes
 (\x -> x^2) 3
