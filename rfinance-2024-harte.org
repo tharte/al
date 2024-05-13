@@ -78,15 +78,45 @@ source("/home/tharte/dot/stats/cache/rfinance-2019/rfinance-2019-functions.R")
     EXPECTATIONS OF FINANCIAL OR BUSINESS RESULTS.
 #+end_export
 
-* Overview
-** Fibonacci: Lisp
-#+begin_src emacs-lisp :exports both :results output :eval no
-(defun fibonacci (n)
-    (if (or (= n 0) (= n 1)) n
-	(+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
+* Motivation
+** What is this?
+#+begin_src R :session *R* :exports both :results output :eval no
+Y(\(r) \(n)
+    `zerop?`(n)(C0)
+    (`IF`(eq(n)(C1))
+	(C1)
+	(\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) 
 #+end_src
 
 #+RESULTS:
+: 
+: 
+
+** What is this?
+#+begin_src R :session *R* :exports both :results output :eval no
+Y(\(r) \(n)
+    `zerop?`(n)(C0)
+    (`IF`(eq(n)(C1))
+	(C1)
+	(\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) (C10) |> .to.integer ()
+#+end_src
+
+#+RESULTS:
+: 
+: [1] 55
+
+** What is this?
+#+begin_src R :session *R* :exports both :results output :eval no
+Y(\(r) \(n)
+    `zerop?`(n)(C0)
+    (`IF`(eq(n)(C1))
+	(C1)
+	(\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) (C10) |> .to.integer ()
+#+end_src
+
+#+RESULTS:
+: 
+: [1] 55
 
 ** Fibonacci: Lisp
 #+begin_src emacs-lisp :exports both :results output :eval no
