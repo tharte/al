@@ -478,6 +478,23 @@ Y(\(r) \(n)
 
   + $\lambda x.xy$
 
+** Combinators
+- \onslide<2-> combinators serve to combine the arguments they are given,
+  without introducing new values (/i.e./ free variables)
+
+- \onslide<3-> combinators are $\lambda$ expressions in which there are /no/ free variables
+
+- \onslide<4-> examples
+
+    + \onslide<5-> combinator (every $\lambda$ expression in the body occurs in the head)
+      $$\lambda x. x$$
+
+    + \onslide<6-> combinator (every $\lambda$ expression in the body occurs in the head)
+      $$\lambda\underbrace{xy}_{\scriptsize\mbox{note}}.x \mapsto \lambda x.(\lambda y. x) \mapsto \underbrace{\lambda x.\lambda y.}_{\scriptsize\mbox{``currying''}} x = \lambda x.\lambda y. x$$
+
+    + \onslide<7-> /not/ a combinator ($y$ is a free variable: it does not occur in the head)
+      $$\lambda x. y$$
+
 ** Backus-Naur Form
 #+begin_src haskell :exports both :results output :eval yes
 (\x -> x^2) 3
