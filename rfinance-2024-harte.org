@@ -609,41 +609,6 @@ The BNF form summarizes the grammar for the Lambda Calculus:
   
 * Lambda Calculus: Implementation
 ** Switching between worlds: utilities
-* Lisp
-** Fibonacci: Lisp
-    #+begin_src emacs-lisp :exports both :results output :eval no
-    (defun fibonacci (n)
-	(if (or (= n 0) (= n 1)) n
-	    (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
-    #+end_src
-
-    #+RESULTS:
-
-** Fibonacci: Lisp
-    #+begin_src emacs-lisp :exports both :results output :eval no
-    (defun fibonacci (n)
-	(if (or (= n 0) (= n 1)) n
-	    (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
-
-    (let ((x '(0 1 2 3 4 5 6 7 8 9 10)))
-    (mapcar (lambda (x) (princ (format "%2s:%3s\n" x (fibonacci x)))) x))
-    #+end_src
-
-    #+RESULTS:
-    #+begin_example
-    0:  0
-    1:  1
-    2:  1
-    3:  2
-    4:  3
-    5:  5
-    6:  8
-    7: 13
-    8: 21
-    9: 34
-    10: 55
-    #+end_example
-
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
