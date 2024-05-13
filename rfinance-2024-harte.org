@@ -343,15 +343,15 @@ Y(\(r) \(n)
     #+RESULTS:
     : [1] 9
 
-** /Only/ functions: No numerals
+** What if we /only/ had functions?
 - Mathematics
   
-  $$x \mapsto x^2$$
+  $$x \mapsto x$$
 
 - R
 
     #+begin_src R :session *R* :exports both :results output :eval no
-    (\(x) x) 
+    \(x) x
     #+end_src
 
     #+RESULTS:
