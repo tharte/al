@@ -49,11 +49,9 @@
 # 
 # SET-UP
 #
-#+BEGIN_SRC R :session :exports none :results silent :eval no
-source("/home/tharte/dot/stats/cache/rfinance-2019/rfinance-2019-functions.R")
-.init.proj(set.proj.dir=TRUE)
-#+END_SRC
-
+#+begin_src R :session :exports none :results silent :eval no
+# none
+#+end_src
 
 * Disclaimer
 ** Disclaimer
