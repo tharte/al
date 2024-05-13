@@ -391,7 +391,7 @@ Y(\(r) \(n)
 
 - \onslide<12-> abstractions
 
-  + \onslide<13-> an abstraction is a /function/ (usually called a "lambda")
+  + \onslide<13-> an abstraction is a /function/ (usually called a ``lambda'')
   + \onslide<14-> two parts (separated by a dot):
     $$\underbrace{\lambda x}_{\mbox{\scriptsize head}}. \underbrace{x}_{\mbox{\scriptsize body}}$$
   + \onslide<15-> the body is a $\lambda$ expression
