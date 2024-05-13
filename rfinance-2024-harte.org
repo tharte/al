@@ -79,6 +79,12 @@ source("/home/tharte/dot/stats/cache/rfinance-2019/rfinance-2019-functions.R")
 #+end_export
 
 * Motivation
+** Dummy citation
+
+- this is a dummy citation
+
+  \cite{Revesz:88}
+
 ** What is this?
 #+begin_src R :session *R* :exports both :results output :eval no
 Y(\(r) \(n)
