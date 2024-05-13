@@ -343,6 +343,20 @@ Y(\(r) \(n)
     #+RESULTS:
     : [1] 9
 
+** /Only/ functions: No numerals
+- Mathematics
+  
+  $$x \mapsto x^2$$
+
+- R
+
+    #+begin_src R :session *R* :exports both :results output :eval no
+    (\(x) x) 
+    #+end_src
+
+    #+RESULTS:
+    : \(x) x
+
 ** Backus-Naur Form
 #+begin_src haskell :exports both :results output :eval yes
 (\x -> x^2) 3
