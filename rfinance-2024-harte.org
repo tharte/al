@@ -113,10 +113,11 @@ Y(\(r) \(n)
 	(\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) -> fibonacci
 
 lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
-       \(n) cat(sprintf("%+2s: %+3s\n", n |> .to.integer(), fibonacci(n) |> .to.integer())))-> dev.null
+       \(n) cat(sprintf("%+2s: %+3s\n", n |> .to.integer(), fibonacci(n) |> .to.integer())))
+           -> dev.null
 #+end_src
 
-#+LATEX: {\tiny
+#+latex: \vspace{-0.5cm}
 #+RESULTS:
 #+begin_example
  0:   0
@@ -131,7 +132,6 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
  9:  34
 10:  55
 #+end_example
-#+LATEX: }
 
 ** Similarities...
 - R
