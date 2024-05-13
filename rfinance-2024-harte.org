@@ -92,7 +92,7 @@ Y(\(r) \(n)
 : 
 : 
 
-** What is this?
+** It's R!
 #+begin_src R :session *R* :exports both :results output :eval no
 Y(\(r) \(n)
     `zerop?`(n)(C0)
@@ -105,30 +105,34 @@ Y(\(r) \(n)
 : 
 : [1] 55
 
-** What is this?
-#+begin_src R :session *R* :exports both :results output :eval no
-Y(\(r) \(n)
-    `zerop?`(n)(C0)
-    (`IF`(eq(n)(C1))
-	(C1)
-	(\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) (C10) |> .to.integer ()
-#+end_src
+** Similarities...
+- R
 
-#+RESULTS:
-: 
-: [1] 55
+    #+begin_src R :session *R* :exports both :results output :eval no
+    Y(\(r) \(n)
+	`zerop?`(n)(C0)
+	(`IF`(eq(n)(C1))
+	    (C1)
+	    (\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) (C10) |> .to.integer ()
+    #+end_src
 
-#+begin_src emacs-lisp :exports both :results output :eval no
-(defun fibonacci (n)
-    (if (or (= n 0) (= n 1)) n
-	(+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
+    #+RESULTS:
+    : 
+    : [1] 55
 
-(print (fibonacci 10))
-#+end_src
+- \onslide<2-> Lisp
 
-#+RESULTS:
-: 
-: 55
+    #+begin_src emacs-lisp :exports both :results output :eval no
+    (defun fibonacci (n)
+	(if (or (= n 0) (= n 1)) n
+	    (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
+
+    (print (fibonacci 10))
+    #+end_src
+
+    #+RESULTS:
+    : 
+    : 55
 
 * Lambda Calculus: Theory
 ** Functions
