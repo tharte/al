@@ -188,7 +188,7 @@ Y(\(r) \(n)
 ** Haskell: ~Int~
 - Mathematics: constrain $x$
   
-  $$f: x \mapsto x^2,\quad\forall x\in\NN$$
+  $$f: x \mapsto x^2,\quad\forall x\in\ZZ$$
 
 - \onslide<2-> type is metadata
 
