@@ -190,16 +190,16 @@ Y(\(r) \(n)
 ** Haskell: ~Int~
 - Mathematics: constrain $x$
   
-  $$x \mapsto x^2,\quad\forall x\in\NN$$
+  $$f: x \mapsto x^2,\quad\forall x\in\NN$$
 
 - \onslide<2-> type is metadata
 
     #+begin_src haskell :exports both :results output :eval no
     :{
-      sq :: Int -> Int
-      sq = \x -> x^2
+      f :: Int -> Int
+      f = \x -> x^2
     :}
-    sq 3
+    f 3
     #+end_src
 
     #+RESULTS:
@@ -208,16 +208,16 @@ Y(\(r) \(n)
 ** Haskell: ~Double~
 - Mathematics: constrain $x$
   
-  $$x \mapsto x^2,\quad\forall x\in\RR$$
+  $$f : x \mapsto x^2,\quad\forall x\in\RR$$
 
 - \onslide<2-> type is metadata
 
     #+begin_src haskell :exports both :results output :eval no
     :{
-      sq :: Double -> Double
-      sq = \x -> x^2
+      f :: Double -> Double
+      f = \x -> x^2
     :}
-    sq 3
+    f 3
     #+end_src
 
     #+RESULTS:
@@ -243,10 +243,10 @@ Y(\(r) \(n)
 
     #+begin_src haskell :exports both :results output :eval no
     :{
-      sq :: Num a => a -> a
-      sq x = x^2
+      f :: Num a => a -> a
+      f x = x^2
     :}
-    sq 3
+    f 3
     #+end_src
 
     #+RESULTS:
@@ -332,6 +332,22 @@ Y(\(r) \(n)
 ** Back to functions...
 - Mathematics
   
+  $$f : x \mapsto x^2$$
+
+- R
+
+    #+begin_src R :session *R* :exports both :results output :eval no
+    f<- \(x) x^2
+    f(3)
+    #+end_src
+
+    #+RESULTS:
+    : 
+    : [1] 9
+
+** What if we /only/ had functions? (and no /names/...)
+- Mathematics
+  
   $$x \mapsto x^2$$
 
 - R
@@ -343,7 +359,7 @@ Y(\(r) \(n)
     #+RESULTS:
     : [1] 9
 
-** What if we /only/ had functions?
+** What if we /only/ had functions? (and no /names/, and no /numerals/...)
 - Mathematics
   
   $$x \mapsto x$$
