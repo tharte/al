@@ -329,6 +329,20 @@ Y(\(r) \(n)
     #+end_example
     #+LATEX: }
 
+** Back to functions...
+- Mathematics
+  
+  $$x \mapsto x^2$$
+
+- R
+
+    #+begin_src R :session *R* :exports both :results output :eval no
+    (\(x) x^2) (3)
+    #+end_src
+
+    #+RESULTS:
+    : [1] 9
+
 ** Backus-Naur Form
 #+begin_src haskell :exports both :results output :eval yes
 (\x -> x^2) 3
