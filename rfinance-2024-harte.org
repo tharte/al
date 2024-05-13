@@ -223,6 +223,7 @@ Y(\(r) \(n)
     :info Num
     #+end_src
 
+    #+LATEX: {\tiny
     #+RESULTS:
     #+begin_example
     class Num a where
@@ -241,6 +242,7 @@ Y(\(r) \(n)
     instance Num Float -- Defined in ‘GHC.Float’
     instance Num Double -- Defined in ‘GHC.Float’
     #+end_example
+    #+LATEX: }
 
 ** Backus-Naur Form
 #+begin_src haskell :exports both :results output :eval yes
