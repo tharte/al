@@ -28,6 +28,7 @@
 #+latex_header:  \usetikzlibrary{arrows}
 #+latex_header:  \usetikzlibrary{matrix}
 
+#+latex_header:  \usepackage{syntax}
 #+latex_header:  \usepackage{textgreek}
 #+latex_header:  \usepackage[makeroom]{cancel}
 
@@ -77,12 +78,6 @@
 #+end_export
 
 * Motivation
-** Dummy citation
-
-- this is a dummy citation
-
-  \cite{Revesz:88}
-
 ** What is this?
 #+begin_src R :session *R* :exports both :results output :eval no
 Y(\(r) \(n)
@@ -562,13 +557,31 @@ Y(\(r) \(n)
 - \onslide<6-> the $\lambda$ expression $(\lambda x. xx)(\lambda x. xx)$ is called ``omega''
 
 ** Backus-Naur Form
-#+begin_src haskell :exports both :results output :eval yes
-(\x -> x^2) 3
-#+end_src
+# Source: https://tex.stackexchange.com/questions/24886/which-package-can-be-used-to-write-bnf-grammars/24934#24934
 
-#+RESULTS:
-: 9
+The BNF form summarizes the grammar for the Lambda Calculus:
 
+#+latex: {\mbox{}\tiny\newline}
+
+    #+latex: \setlength{\grammarparsep}{20pt plus 1pt minus 1pt} % increase separation between rules
+    #+latex: \setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
+
+    \begin{grammar}
+
+	<$\lambda$ expression> ::= <variable> 
+			       \alt <constant> 
+			       \alt <application> 
+			       \alt <abstraction> 
+
+	<application> ::= (<$\lambda$ expression>) <$\lambda$ expression>
+
+	<abstraction> ::= $\lambda$ <variable>. <$\lambda$ expression>
+
+    \end{grammar}
+
+#+latex: {\mbox{}\tiny\newline}
+#+latex: {\tiny Source: \cite{Revesz:88}}
+  
 * Lambda Calculus: Implementation
 ** Switching between worlds: utilities
 * Lisp
