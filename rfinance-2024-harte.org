@@ -519,6 +519,30 @@ Y(\(r) \(n)
       \onslide<9->
       $$a$$
 
+** Combinators in use
+- \onslide<2-> select /right/
+
+      \onslide<3->
+      $$(\lambda xy. y)(ab)$$
+      
+      \onslide<4->
+      $$(\lambda x. \lambda y. y)(ab)$$
+
+      \onslide<5->
+      $$(\lambda x. \lambda y. y)\bigl((a)(b)\bigr)$$
+
+      \onslide<6->
+      $$(\lambda [x:= a]. \lambda y. y)\bigl((b)\bigr)$$
+
+      \onslide<7->
+      $$(\lambda y. y)\bigl((b)\bigr)$$
+
+      \onslide<8->
+      $$\lambda [y:= b]. y$$
+
+      \onslide<9->
+      $$b$$
+
 ** Backus-Naur Form
 #+begin_src haskell :exports both :results output :eval yes
 (\x -> x^2) 3
