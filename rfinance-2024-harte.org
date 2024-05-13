@@ -452,6 +452,32 @@ Y(\(r) \(n)
     \onslide<13->
     $$\underbrace{\lambda y.y}_{\scriptsize\mbox{reduced}}$$
 
+** Free variables
+- \onslide<2-> here, $z$ is a /free variable/
+
+  + $\bigl( (\lambda x.x)(\lambda y.y) \bigr)\,z$
+
+  + \onslide<3-> $\beta$ reduce the $\lambda$ expression
+
+    \onslide<4-> 
+    $$\bigl( (\lambda x.x)(\lambda y.y) \bigr)\,z$$
+
+    \onslide<5-> 
+    $$\bigl( \lambda [x:= \lambda y.y].x \bigr)\,z$$
+
+    \onslide<6-> 
+    $$(\lambda y.y)\,z$$
+
+    \onslide<7-> 
+    $$\lambda [y:= z].y$$
+
+    \onslide<8-> 
+    $$z$$
+
+- \onslide<9-> here, $y$ is a /free variable/
+
+  + $\lambda x.xy$
+
 ** Backus-Naur Form
 #+begin_src haskell :exports both :results output :eval yes
 (\x -> x^2) 3
