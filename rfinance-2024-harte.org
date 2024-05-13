@@ -343,7 +343,7 @@ Y(\(r) \(n)
     : 
     : [1] 9
 
-** What if we /only/ had functions? (and no /names/...)
+** What if we /only/ had anonymous functions? (no /function names/)
 - Mathematics
   
   $$x \mapsto x^2$$
@@ -357,7 +357,7 @@ Y(\(r) \(n)
     #+RESULTS:
     : [1] 9
 
-** What if we /only/ had functions? (and no /names/, and no /numerals/...)
+** What if we /only/ had anonymous functions? (nor /numerals/...)
 - Mathematics
   
   $$x \mapsto x$$
