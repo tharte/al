@@ -181,6 +181,61 @@ Y(\(r) \(n)
     #+RESULTS:
     : [1] 9
 
+** Haskell
+- Mathematics: constrain $x$
+  
+  $$x \mapsto x^2,\quad\forall x\in\RR$$
+
+- \onslide<2-> Haskell has type
+
+    #+begin_src haskell :exports both :results output :eval no
+    :type \x -> x^2
+    #+end_src
+
+    \pause
+    
+    #+RESULTS:
+    : \x -> x^2 :: Num a => a -> a
+
+- \onslide<3-> type is metadata
+
+    #+begin_src haskell :exports both :results output :eval no
+    :{
+      sq :: Num a => a -> a
+      sq x = x^2
+    :}
+    sq 3
+    #+end_src
+
+    #+RESULTS:
+    : 9
+
+** Haskell: What is ~Num~?
+- \onslide<2-> ~Num~ is a /type class/
+
+    #+begin_src haskell :exports both :results output :eval no
+    :info Num
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    class Num a where
+      (+) :: a -> a -> a
+      (-) :: a -> a -> a
+      (*) :: a -> a -> a
+      negate :: a -> a
+      abs :: a -> a
+      signum :: a -> a
+      fromInteger :: Integer -> a
+      {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+	    -- Defined in ‘GHC.Num’
+    instance Num Word -- Defined in ‘GHC.Num’
+    instance Num Integer -- Defined in ‘GHC.Num’
+    instance Num Int -- Defined in ‘GHC.Num’
+    instance Num Float -- Defined in ‘GHC.Float’
+    instance Num Double -- Defined in ‘GHC.Float’
+    #+end_example
+
 ** Backus-Naur Form
 #+begin_src haskell :exports both :results output :eval yes
 (\x -> x^2) 3
