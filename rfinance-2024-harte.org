@@ -510,7 +510,7 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
       $$\lambda x. x$$
 
     + \onslide<6-> combinator (every $\lambda$ expression in the body occurs in the head):
-      $$\lambda\underbrace{xy}_{\scriptsize\mbox{note}}.x \mapsto \lambda x.(\lambda y. x) \mapsto \underbrace{\lambda x.\lambda y.}_{\scriptsize\mbox{``currying''}} x = \lambda x.\lambda y. x$$
+      $$\underbrace{\lambda xy}_{\scriptsize\mbox{note}}\!\!.x \mapsto \lambda x.(\lambda y. x) \mapsto \underbrace{\lambda x.\lambda y.}_{\scriptsize\mbox{``currying''}} \!\!\!x = \lambda x.\lambda y. x$$
 
     + \onslide<7-> /not/ a combinator ($y$ is a free variable: it does not occur in the head):
       $$\lambda x. y$$
