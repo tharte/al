@@ -706,6 +706,39 @@ false |> .to.logical()
     : [1] FALSE
     : [1] TRUE
 
+** Logic: Or
+    \onslide<2-> 
+    $${\tt or} \bydefn \lambda x\lambda y.xTy$$
+
+    \onslide<3-> 
+    $$xTy = (F)T(T) \mapsto T$$
+
+    \onslide<4-> 
+    \vspace{-.5cm}
+    $$xTy = (F)T(F) \mapsto F$$
+
+    \onslide<5-> 
+    \vspace{-.5cm}
+    $$xTy = (T)T(F) \mapsto T$$
+
+    \onslide<6-> 
+    \vspace{-.5cm}
+    $$xTy = (T)T(T) \mapsto T$$
+
+    \onslide<7-> 
+    #+begin_src R :session :exports both :results output :eval no
+    or(false)(true) |> .to.logical()
+    or(false)(false) |> .to.logical()
+    or(true)(false) |> .to.logical()
+    or(true)(true) |> .to.logical()
+    #+end_src
+
+    #+RESULTS:
+    : [1] TRUE
+    : [1] FALSE
+    : [1] TRUE
+    : [1] TRUE
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
