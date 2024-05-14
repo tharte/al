@@ -45,7 +45,8 @@
 # Source: https://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex
 #+latex_header:  \def\checkmark{\textcolor{green}{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}}
 
-
+#+latex_header:  \newcommand{\alphaeq}{\stackrel{\alpha}{=}}
+#+latex_header:  \newcommand{\betared}{\stackrel{\beta}{\rightarrow}}
 
 # 
 # SET-UP
