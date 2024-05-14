@@ -848,6 +848,42 @@ C3 |> .to.integer()
     #+LATEX: }
 
 ** Arithmetic
+\pause
+- addition
+
+    $$ {\tt add} \bydefn \lambda nm.(m\,{\tt succ})n$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    add(C0)(C1) |> .to.integer()
+    add(C1)(C2) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 1
+    : [1] 3
+    #+LATEX: }
+
+\pause
+- subtraction
+
+    $$ {\tt sub} \bydefn \lambda nm.(m\,\mbox{pred})n$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    sub(C1)(C1) |> .to.integer()
+    sub(C2)(C1) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 0
+    : [1] 1
+    #+LATEX: }
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
