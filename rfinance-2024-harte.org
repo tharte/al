@@ -739,6 +739,27 @@ false |> .to.logical()
     : [1] TRUE
     : [1] TRUE
 
+** Logic: Not
+    \onslide<2-> 
+    $${\tt not} \bydefn pFT$$
+
+    \onslide<3-> 
+    $$pFT = (F)FT \mapsto T$$
+
+    \onslide<4-> 
+    \vspace{-.5cm}
+    $$pFT = (T)FT \mapsto F$$
+
+    \onslide<5-> 
+    #+begin_src R :session :exports both :results output :eval no
+    not(false) |> .to.logical()
+    not(true) |> .to.logical()
+    #+end_src
+
+    #+RESULTS:
+    : [1] TRUE
+    : [1] FALSE
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
