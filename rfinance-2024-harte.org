@@ -608,7 +608,7 @@ The BNF form summarizes the grammar for the Lambda Calculus:
 #+latex: {\tiny Source: \cite{Revesz:88}}
   
 * Lambda Calculus: Implementation
-** Booleans & Branching
+** Booleans & branching
 - \onslide<2-> Truth and Falsity
 
     \onslide<3-> 
