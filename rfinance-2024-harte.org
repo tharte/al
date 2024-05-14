@@ -971,6 +971,29 @@ C3 |> .to.integer()
     : [1] TRUE
     #+LATEX: }
 
+** Comparisons
+\pause
+- is-equal
+
+    $$ {\tt eq} \bydefn \lambda nm.{\tt and}({\tt le}(n)(m))({\tt le}(n)(m))$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    eq(C1)(C1) |> .to.logical()
+    eq(C1)(C2) |> .to.logical()
+    eq(C2)(C1) |> .to.logical()
+    eq(C2)(C2) |> .to.logical()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] TRUE
+    : [1] FALSE
+    : [1] FALSE
+    : [1] TRUE
+    #+LATEX: }
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
