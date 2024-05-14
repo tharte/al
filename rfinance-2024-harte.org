@@ -811,7 +811,7 @@ C3 |> .to.integer()
 \pause
 - successor
 
-    $$ {\tt succ} \bydefn \lambda n.\lambda f.\lambda x. f(nfx) = {\tt succ} \bydefn \lambda nfx.f((nf)x)$$
+    $$ {\tt succ} \bydefn \lambda n.\lambda f.\lambda x. f(nfx) = \lambda nfx.f((nf)x)$$
 
 \pause
     #+begin_src R :session :exports both :results output :eval no
@@ -831,7 +831,7 @@ C3 |> .to.integer()
 
   \begin{eqnarray*}
     {\tt pred} &\bydefn& \lambda n.\lambda n(\lambda p. \lambda z.z({\tt succ}(p(T)))(p(T)))(\lambda z.z(C_0)(C_0))(F) \\
-                     &=& \lambda n.n\lambda p.\lambda z.({\tt succ}(p(T)))(p(T))(\lambda z.z(C0)(C0))(F)
+                     &=& \lambda n.n\lambda p.\lambda z.({\tt succ}(p(T)))(p(T))(\lambda z.z(C_0)(C_0))(F)
   \end{eqnarray*}
 
 \pause
