@@ -884,6 +884,43 @@ C3 |> .to.integer()
     : [1] 1
     #+LATEX: }
 
+** Arithmetic
+\pause
+- multiplication
+
+    $$ {\tt mul} \bydefn \lambda nm.m({\tt add} n)C_0$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    mul(C0)(C1) |> .to.integer()
+    mul(C1)(C2) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 0
+    : [1] 2
+    #+LATEX: }
+
+\pause
+- exponentiation
+
+    $$ {\tt exp} \bydefn \lambda nm.mn$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    exp(C2)(C1) |> .to.integer()
+    exp(C2)(C2) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 2
+    : [1] 4
+    #+LATEX: }
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
