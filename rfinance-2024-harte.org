@@ -807,6 +807,47 @@ C3 |> .to.integer()
     & \betared & 2 
 \end{eqnarray*}
 
+** Arithmetic
+\pause
+- successor
+
+    $$ {\tt succ} \bydefn \lambda n.\lambda f.\lambda x. f(nfx) = {\tt succ} \bydefn \lambda nfx.f((nf)x)$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    succ(C0) |> .to.integer()
+    succ(C10) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 1
+    : [1] 11
+    #+LATEX: }
+
+\pause
+- predecessor
+
+  \begin{eqnarray*}
+    {\tt pred} &\bydefn& \lambda n.\lambda n(\lambda p. \lambda z.z({\tt succ}(p(T)))(p(T)))(\lambda z.z(C_0)(C_0))(F) \\
+                     &=& \lambda n.n\lambda p.\lambda z.({\tt succ}(p(T)))(p(T))(\lambda z.z(C0)(C0))(F)
+  \end{eqnarray*}
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    pred(C1) |> .to.integer()
+    pred(C10) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 0
+    : [1] 9
+    #+LATEX: }
+
+** Arithmetic
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
