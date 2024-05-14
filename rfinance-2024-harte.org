@@ -673,6 +673,39 @@ false |> .to.logical()
 #+RESULTS:
 : [1] FALSE
 
+** Logic: And 
+    \onslide<2-> 
+    $${\tt and} \bydefn \lambda x\lambda y.xyF$$
+
+    \onslide<3-> 
+    $$xyF = (FT)F \mapsto F$$
+
+    \onslide<4-> 
+    \vspace{-.5cm}
+    $$xyF = (FF)F \mapsto F$$
+
+    \onslide<5-> 
+    \vspace{-.5cm}
+    $$xyF = (TF)F \mapsto F$$
+
+    \onslide<6-> 
+    \vspace{-.5cm}
+    $$xyF = (TT)F \mapsto T$$
+
+    \onslide<7-> 
+    #+begin_src R :session :exports both :results output :eval no
+    and(false)(true) |> .to.logical()
+    and(false)(false) |> .to.logical()
+    and(true)(false) |> .to.logical()
+    and(true)(true) |> .to.logical()
+    #+end_src
+
+    #+RESULTS:
+    : [1] FALSE
+    : [1] FALSE
+    : [1] FALSE
+    : [1] TRUE
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
