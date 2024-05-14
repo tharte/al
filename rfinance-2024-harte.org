@@ -474,29 +474,30 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
     \end{eqnarray*}
 
 ** Free variables
-- \onslide<2-> here, $z$ is a /free variable/
+\pause
+- here, $z$ is a /free variable/
 
+  \pause
   + $\bigl( (\lambda x.x)(\lambda y.y) \bigr)\,z$
 
-  + \onslide<3-> $\beta$ reduce the $\lambda$ expression
+  \pause
+  + $\beta$ reduce the $\lambda$ expression:
 
-    \onslide<4-> 
-    $$\bigl( (\lambda x.x)(\lambda y.y) \bigr)\,z$$
+    \pause
+    \begin{eqnarray*}
+	 \bigl( (\lambda x.x)(\lambda y.y) \bigr)\,z &=& \bigl( \lambda [x:= \lambda y.y].x \bigr)\,z \\[2mm]
+    \pause
+                                                     &\betared & (\lambda y.y)\,z \\[2mm]
+    \pause
+                                                     &=& \lambda [y:= z].y \\[2mm]
+    \pause
+                                                     &\betared & z
+    \end{eqnarray*}
 
-    \onslide<5-> 
-    $$\bigl( \lambda [x:= \lambda y.y].x \bigr)\,z$$
+\pause
+- here, $y$ is a /free variable/
 
-    \onslide<6-> 
-    $$(\lambda y.y)\,z$$
-
-    \onslide<7-> 
-    $$\lambda [y:= z].y$$
-
-    \onslide<8-> 
-    $$z$$
-
-- \onslide<9-> here, $y$ is a /free variable/
-
+  \pause
   + $\lambda x.xy$
 
 ** Combinators
@@ -511,58 +512,42 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
       $$\lambda x. x$$
 
     + \onslide<6-> combinator (every $\lambda$ expression in the body occurs in the head):
-      $$\underbrace{\lambda xy}_{\scriptsize\mbox{note}}\!\!.x \mapsto \lambda x.(\lambda y. x) \mapsto \underbrace{\lambda x.\lambda y.}_{\scriptsize\mbox{``currying''}} \!\!\!x = \lambda x.\lambda y. x$$
+      $$\underbrace{\lambda xy}_{\scriptsize\mbox{note}}\!\!.x = \lambda x.(\lambda y. x) = \underbrace{\lambda x.\lambda y.}_{\scriptsize\mbox{``currying''}} \!\!\!x $$
 
     + \onslide<7-> /not/ a combinator ($y$ is a free variable: it does not occur in the head):
       $$\lambda x. y$$
 
-** Combinators in use
-- \onslide<2-> select /left/
+** Combinators in use: select /left/
+\pause
+\begin{eqnarray*}
+      (\lambda xy. x)(ab) &=& (\lambda x. \lambda y. x)(ab) \\[2mm]
+\pause
+                          &=& \bigl((\lambda x. \lambda y. x)(a)\bigr)(b) \\[2mm]
+\pause
+                          &=& (\lambda [x:= a]. \lambda y. x)(b) \\[2mm]
+\pause
+                          &\betared& (\lambda y. a)(b) \\[2mm]
+\pause
+                          &=& \lambda [y:= b]. a \\[2mm]
+\pause
+                          &\betared& a
+\end{eqnarray*}
 
-      \onslide<3->
-      $$(\lambda xy. x)(ab)$$
-      
-      \onslide<4->
-      $$(\lambda x. \lambda y. x)(ab)$$
-
-      \onslide<5->
-      $$\bigl((\lambda x. \lambda y. x)(a)\bigr)(b)$$
-
-      \onslide<6->
-      $$(\lambda [x:= a]. \lambda y. x)(b)$$
-
-      \onslide<7->
-      $$(\lambda y. a)(b)$$
-
-      \onslide<8->
-      $$\lambda [y:= b]. a$$
-
-      \onslide<9->
-      $$a$$
-
-** Combinators in use
-- \onslide<2-> select /right/
-
-      \onslide<3->
-      $$(\lambda xy. y)(ab)$$
-      
-      \onslide<4->
-      $$(\lambda x. \lambda y. y)(ab)$$
-
-      \onslide<5->
-      $$\bigl((\lambda x. \lambda y. y)(a)\bigr)(b)$$
-
-      \onslide<6->
-      $$(\lambda [x:= a]. \lambda y. y)(b)$$
-
-      \onslide<7->
-      $$(\lambda y. y)(b)$$
-
-      \onslide<8->
-      $$\lambda [y:= b]. y$$
-
-      \onslide<9->
-      $$b$$
+** Combinators in use: select /right/
+\pause
+\begin{eqnarray*}
+      (\lambda xy. y)(ab) &=& (\lambda x. \lambda y. y)(ab) \\[2mm]
+\pause
+                          &=& \bigl((\lambda x. \lambda y. y)(a)\bigr)(b) \\[2mm]
+\pause
+                          &=& (\lambda [x:= a]. \lambda y. y)(b) \\[2mm]
+\pause
+                          &\betared& (\lambda y. y)(b) \\[2mm]
+\pause
+                          &=& \lambda [y:= b]. b \\[2mm]
+\pause
+                          &\betared& b
+\end{eqnarray*}
 
 ** Divergence: non-terminating $\lambda$ expressions
 - \onslide<2-> consider
@@ -613,10 +598,10 @@ The BNF form summarizes the grammar for the Lambda Calculus:
 - \onslide<2-> Truth and Falsity
 
     \onslide<3-> 
-    $${\tt true} = T \bydefn \lambda x\lambda y.x$$
+    $${\tt true} \bydefn T \alphaeq \lambda x\lambda y.x$$
 
     \onslide<4-> 
-    $${\tt false} = F \bydefn \lambda x\lambda y.y$$
+    $${\tt false} \bydefn F \alphaeq \lambda x\lambda y.y$$
 
 - \onslide<5-> if-then-else (the Branching Combinator)
 
@@ -624,10 +609,10 @@ The BNF form summarizes the grammar for the Lambda Calculus:
     $${\tt IF} \bydefn p (ab)$$
 
     \onslide<7-> 
-    $$p (ab) = T (ab) = (\lambda x\lambda y.x) (ab) \mapsto a$$
+    $$p (ab) \betared T (ab) \alphaeq (\lambda x\lambda y.x) (ab) \betared a$$
 
     \onslide<8-> 
-    $$p (ab) = F (ab) = (\lambda x\lambda y.y) (ab) \mapsto b$$
+    $$p (ab) \betared F (ab) \alphaeq (\lambda x\lambda y.y) (ab) \betared b$$
 
 ** Verify that branching works
 \onslide<2-> 
@@ -679,19 +664,19 @@ false |> .to.logical()
     $${\tt and} \bydefn \lambda x\lambda y.xyF$$
 
     \onslide<3-> 
-    $$xyF = (FT)F \mapsto F$$
+    $$xyF \betared (FT)F \betared F$$
 
     \onslide<4-> 
     \vspace{-.5cm}
-    $$xyF = (FF)F \mapsto F$$
+    $$xyF \betared (FF)F \betared F$$
 
     \onslide<5-> 
     \vspace{-.5cm}
-    $$xyF = (TF)F \mapsto F$$
+    $$xyF \betared (TF)F \betared F$$
 
     \onslide<6-> 
     \vspace{-.5cm}
-    $$xyF = (TT)F \mapsto T$$
+    $$xyF \betared (TT)F \betared T$$
 
     \onslide<7-> 
     #+begin_src R :session :exports both :results output :eval no
@@ -712,19 +697,19 @@ false |> .to.logical()
     $${\tt or} \bydefn \lambda x\lambda y.xTy$$
 
     \onslide<3-> 
-    $$xTy = (F)T(T) \mapsto T$$
+    $$xTy \betared (F)T(T) \betared T$$
 
     \onslide<4-> 
     \vspace{-.5cm}
-    $$xTy = (F)T(F) \mapsto F$$
+    $$xTy \betared (F)T(F) \betared F$$
 
     \onslide<5-> 
     \vspace{-.5cm}
-    $$xTy = (T)T(F) \mapsto T$$
+    $$xTy \betared (T)T(F) \betared T$$
 
     \onslide<6-> 
     \vspace{-.5cm}
-    $$xTy = (T)T(T) \mapsto T$$
+    $$xTy \betared (T)T(T) \betared T$$
 
     \onslide<7-> 
     #+begin_src R :session :exports both :results output :eval no
@@ -745,11 +730,11 @@ false |> .to.logical()
     $${\tt not} \bydefn pFT$$
 
     \onslide<3-> 
-    $$pFT = (F)FT \mapsto T$$
+    $$pFT \betared (F)FT \betared T$$
 
     \onslide<4-> 
     \vspace{-.5cm}
-    $$pFT = (T)FT \mapsto F$$
+    $$pFT \betared (T)FT \betared F$$
 
     \onslide<5-> 
     #+begin_src R :session :exports both :results output :eval no
@@ -763,17 +748,17 @@ false |> .to.logical()
 
 ** Church Numerals
 \begin{eqnarray*}
-    {\tt C0} &=& C_0\bydefn \lambda f.\lambda x. x \alphaeq \lambda x.\lambda y.y = {\tt false} \\[2mm]
+    {\tt C0} &\bydefn& C_0 \alphaeq \lambda f.\lambda x. x \alphaeq \lambda x.\lambda y.y = {\tt false} \\[2mm]
 \pause
-    {\tt C1} &=& C_1\bydefn \lambda f.\lambda x. f(x) \\[2mm]
+    {\tt C1} &\bydefn& C_1 \alphaeq \lambda f.\lambda x. f(x) \\[2mm]
 \pause
-    {\tt C2} &=& C_2\bydefn \lambda f.\lambda x. f(f(x)) \\[2mm]
+    {\tt C2} &\bydefn& C_2 \alphaeq \lambda f.\lambda x. f(f(x)) \\[2mm]
 \pause
-    {\tt C3} &=& C_3\bydefn \lambda f.\lambda x. f(f(f(x))) \\[2mm]
+    {\tt C3} &\bydefn& C_3 \alphaeq \lambda f.\lambda x. f(f(f(x))) \\[2mm]
 \pause
              &\vdots&  \\[2mm]
 \pause
-             &=& C_N\bydefn \lambda f.\lambda x. f^N(x) 
+             &\bydefn& C_N \alphaeq \lambda f.\lambda x. f^N(x) 
 \end{eqnarray*}
 
 ** Switching between worlds: ~.to.integer~
