@@ -235,7 +235,7 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
       f :: Double -> Double
       f = \x -> x^2
     :}
-    f 3
+    f 3.0
     #+end_src
 
     #+RESULTS:
