@@ -446,32 +446,32 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
     $$\underbrace{1}_{\mbox{\scriptsize reduced}}$$
      
 ** $\alpha$ equivalence, $\beta$ reduction
-- \onslide<2-> alpha equivalence
+\pause
+- alpha equivalence
 
-  + \onslide<3-> $\lambda x.x$
-  + \onslide<4-> $\lambda y.y$ - same thing
-  + \onslide<5-> $\lambda x.xy$
-  + \onslide<6-> $\lambda x.xz$ - same thing
+  \pause
+  $\lambda x.x \alphaeq \underbrace{\lambda y.y}_{\mbox{\scriptsize same thing}}$
 
-- \onslide<7-> beta reduction
+  \pause
+  $\lambda x.xy \alphaeq \underbrace{\lambda x.xz}_{\mbox{\scriptsize same thing}}$
 
-    + \onslide<8->
-      application: substitute the input $\lambda$ expression for all instances of bound variables
-      within the body of the abstraction
+\pause
+- beta reduction
+    \pause
 
-    + \onslide<9->
-      eliminate the head of the abstraction (its only purpose is to bind a variable)
+	1. application: substitute the input $\lambda$ expression for all instances of bound variables
+	   within the body of the abstraction
 
-- \onslide<10-> example
+	2. eliminate the head of the abstraction (its only purpose is to bind a variable)
 
-    \onslide<11->
-    $$(\lambda z.z)(\lambda y.y) \mapsto \underbrace{(\lambda x.x)}_{\scriptsize\mbox{$\alpha$ equivalence}}(\lambda y.y)$$ 
-
-    \onslide<12->
-    $$\lambda [x:= \lambda y.y].x$$
-
-    \onslide<13->
-    $$\underbrace{\lambda y.y}_{\scriptsize\mbox{reduced}}$$
+    \pause
+    \begin{eqnarray*}
+	(\lambda z.z)(\lambda y.y) & \alphaeq & \underbrace{(\lambda x.x)}_{\scriptsize\mbox{$\alpha$ equivalence}}(\lambda y.y) \\[2mm]
+    \pause
+			    &=& \lambda [x:= \lambda y.y].x \\[2mm]
+    \pause
+			    &\betared & \underbrace{\lambda y.y}_{\scriptsize\mbox{reduced}}
+    \end{eqnarray*}
 
 ** Free variables
 - \onslide<2-> here, $z$ is a /free variable/
