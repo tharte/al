@@ -802,6 +802,26 @@ C3 |> .to.integer()
 : [1] 2
 : [1] 3
 
+** Switching between worlds: ~.to.integer~
+#+begin_src R :session :exports code :eval no
+`.to.integer`<- \(n) n(\(x) x+1)(0)
+#+end_src
+\pause
+\vspace{-0.5cm}
+\begin{eqnarray*}
+    \underbrace{(\lambda f.\lambda x. x)}_{\mbox{\scriptsize $C_0$}}\underbrace{(\lambda x.x+1)}_f \underbrace{(0)}_x & \betared & 0 \\[2mm]
+\pause
+    \underbrace{(\lambda f.\lambda x. f(x))}_{\mbox{\scriptsize $C_1$}}(\lambda x.x+1)(0) & \betared & \underbrace{(\lambda x.x+1)}_f\underbrace{(0)}_x \\
+\pause
+     & \betared & 1 \\[2mm]
+\pause
+    \bigl(\underbrace{(\lambda f.\lambda x. f(f(x)))}_{\mbox{\scriptsize $C_2$}}(\lambda x.x+1)\bigr)(0) & \betared & \underbrace{(\lambda x.x+1)}_f\underbrace{(\lambda x.x+1)}_f\underbrace{(0)}_x \\
+\pause
+                                                                                                         & \betared & \underbrace{(\lambda x.(\lambda x.x+1)+1)}_{f(f(x))}\underbrace{(0)}_x \\
+\pause
+    & \betared & 2 
+\end{eqnarray*}
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
