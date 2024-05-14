@@ -771,7 +771,9 @@ false |> .to.logical()
 \pause
     {\tt C3} &=& C_3\bydefn \lambda f.\lambda x. f(f(f(x))) \\[2mm]
 \pause
-             &\vdots& 
+             &\vdots&  \\[2mm]
+\pause
+             &=& C_N\bydefn \lambda f.\lambda x. f^N(x) 
 \end{eqnarray*}
 
 ** Switching between worlds: ~.to.integer~
