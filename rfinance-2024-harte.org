@@ -525,13 +525,13 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
       $$(\lambda x. \lambda y. x)(ab)$$
 
       \onslide<5->
-      $$(\lambda x. \lambda y. x)\bigl((a)(b)\bigr)$$
+      $$\bigl((\lambda x. \lambda y. x)(a)\bigr)(b)$$
 
       \onslide<6->
-      $$(\lambda [x:= a]. \lambda y. x)\bigl((b)\bigr)$$
+      $$(\lambda [x:= a]. \lambda y. x)(b)$$
 
       \onslide<7->
-      $$(\lambda y. a)\bigl((b)\bigr)$$
+      $$(\lambda y. a)(b)$$
 
       \onslide<8->
       $$\lambda [y:= b]. a$$
@@ -549,13 +549,13 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
       $$(\lambda x. \lambda y. y)(ab)$$
 
       \onslide<5->
-      $$(\lambda x. \lambda y. y)\bigl((a)(b)\bigr)$$
+      $$\bigl((\lambda x. \lambda y. y)(a)\bigr)(b)$$
 
       \onslide<6->
-      $$(\lambda [x:= a]. \lambda y. y)\bigl((b)\bigr)$$
+      $$(\lambda [x:= a]. \lambda y. y)(b)$$
 
       \onslide<7->
-      $$(\lambda y. y)\bigl((b)\bigr)$$
+      $$(\lambda y. y)(b)$$
 
       \onslide<8->
       $$\lambda [y:= b]. y$$
