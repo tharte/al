@@ -645,6 +645,34 @@ IF(false)(\(a) a)(\(b) b)
 #+RESULTS:
 : \(b) b
 
+** Switching between worlds: ~.to.logical~
+\onslide<2-> 
+#+begin_src R :session :exports both :results output :eval no
+.to.logical
+#+end_src
+
+#+RESULTS:
+: function (b) 
+: (IF(b)(TRUE))(FALSE)
+: <bytecode: 0x55fc452616e0>
+: <environment: namespace:al>
+
+\onslide<3-> 
+#+begin_src R :session :exports both :results output :eval no
+true |> .to.logical()
+#+end_src
+
+#+RESULTS:
+: [1] TRUE
+
+\onslide<4-> 
+#+begin_src R :session :exports both :results output :eval no
+false |> .to.logical()
+#+end_src
+
+#+RESULTS:
+: [1] FALSE
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
