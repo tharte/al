@@ -608,7 +608,26 @@ The BNF form summarizes the grammar for the Lambda Calculus:
 #+latex: {\tiny Source: \cite{Revesz:88}}
   
 * Lambda Calculus: Implementation
-** Switching between worlds: utilities
+** Booleans & Branching
+- \onslide<2-> Truth and Falsity
+
+    \onslide<3-> 
+    $${\tt true} = T \bydefn \lambda x\lambda y.x$$
+
+    \onslide<4-> 
+    $${\tt false} = F \bydefn \lambda x\lambda y.y$$
+
+- \onslide<5-> if-then-else (the Branching Combinator)
+
+    \onslide<6-> 
+    $${\tt IF} \bydefn p (ab)$$
+
+    \onslide<7-> 
+    $$p (ab) = T (ab) = (\lambda x\lambda y.x) (ab) \mapsto a$$
+
+    \onslide<8-> 
+    $$p (ab) = F (ab) = (\lambda x\lambda y.y) (ab) \mapsto b$$
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
