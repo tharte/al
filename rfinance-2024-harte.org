@@ -775,6 +775,31 @@ false |> .to.logical()
 \end{eqnarray*}
 
 ** Switching between worlds: ~.to.integer~
+\onslide<2-> 
+#+begin_src R :session :exports both :results output :eval no
+.to.integer
+#+end_src
+
+#+RESULTS:
+: function (n) 
+: n(function(x) x + 1)(0)
+: <bytecode: 0x55fc442ceef0>
+: <environment: namespace:al>
+
+\onslide<3-> 
+#+begin_src R :session :exports both :results output :eval no
+C0 |> .to.integer()
+C1 |> .to.integer()
+C2 |> .to.integer()
+C3 |> .to.integer()
+#+end_src
+
+#+RESULTS:
+: [1] 0
+: [1] 1
+: [1] 2
+: [1] 3
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
