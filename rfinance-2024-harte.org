@@ -628,6 +628,23 @@ The BNF form summarizes the grammar for the Lambda Calculus:
     \onslide<8-> 
     $$p (ab) = F (ab) = (\lambda x\lambda y.y) (ab) \mapsto b$$
 
+** Verify that branching works
+\onslide<2-> 
+#+begin_src R :session :exports both :results output :eval no
+IF(true)(\(a) a)(\(b) b) 
+#+end_src
+
+#+RESULTS:
+: \(a) a
+
+\onslide<3-> 
+#+begin_src R :session :exports both :results output :eval no
+IF(false)(\(a) a)(\(b) b) 
+#+end_src
+
+#+RESULTS:
+: \(b) b
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
