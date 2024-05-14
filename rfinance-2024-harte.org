@@ -761,6 +761,20 @@ false |> .to.logical()
     : [1] TRUE
     : [1] FALSE
 
+** Church Numerals
+\begin{eqnarray*}
+    {\tt C0} &=& C_0\bydefn \lambda f.\lambda x. x \alphaeq \lambda x.\lambda y.y = {\tt false} \\[2mm]
+\pause
+    {\tt C1} &=& C_1\bydefn \lambda f.\lambda x. f(x) \\[2mm]
+\pause
+    {\tt C2} &=& C_2\bydefn \lambda f.\lambda x. f(f(x)) \\[2mm]
+\pause
+    {\tt C3} &=& C_3\bydefn \lambda f.\lambda x. f(f(f(x))) \\[2mm]
+\pause
+             &\vdots& 
+\end{eqnarray*}
+
+** Switching between worlds: ~.to.integer~
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
