@@ -646,7 +646,6 @@ The BNF form summarizes the grammar for the Lambda Calculus:
     \begin{grammar}
 
 	<$\lambda$ expression> ::= <variable> 
-			       \alt <constant> 
 			       \alt <application> 
 			       \alt <abstraction> 
 
