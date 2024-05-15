@@ -1017,7 +1017,6 @@ C3 |> .to.integer()
     le(C1)(C1) |> .to.logical()
     le(C1)(C2) |> .to.logical()
     le(C2)(C1) |> .to.logical()
-    le(C2)(C2) |> .to.logical()
     #+end_src
 
     #+RESULTS:
@@ -1028,7 +1027,6 @@ C3 |> .to.integer()
     : [1] TRUE
     : [1] TRUE
     : [1] FALSE
-    : [1] TRUE
     #+LATEX: }
 
 ** Comparisons
