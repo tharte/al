@@ -199,6 +199,32 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
   \pause
   + Church: functional
 
+\pause
+- scalability
+
+** R
+
+    #+attr_latex: :width 0.7\linewidth
+    [[file:./img/ihaka-gentleman.png]]
+
+#+latex: {\tiny Source: \cite{Ihaka:96}}
+
+** Scheme
+
+    #+attr_latex: :width 0.95\linewidth
+    [[file:./img/sussman-steele-scheme-75.png]]
+
+#+latex: {\tiny Source: \cite{Sussman:75}}
+
+** Functional languages
+\pause
+    #+attr_latex: :width 0.50\linewidth
+    [[file:./img/haskell.png]]
+
+\pause
+    #+attr_latex: :width 0.50\linewidth
+    [[file:./img/scala.png]]
+
 * Lambda Calculus: Theory
 ** Functions
 - Mathematics
