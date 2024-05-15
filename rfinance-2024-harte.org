@@ -444,7 +444,7 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
     #+RESULTS:
     : [1] 9
 
-** What if we /only/ had anonymous functions? (nor /numerals/...)
+** What if we /only/ had anonymous functions? (no /numerals/...)
 - Mathematics
   
   $$x \mapsto x$$
