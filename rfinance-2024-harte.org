@@ -159,6 +159,46 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
 10: 55
 #+end_example
 
+** What is functional programming?
+- \onslide<2-> ``use functions, instead of objects\dots''
+  
+- \onslide<3-> ``no side effects\dots''
+  
+- \onslide<4-> ``mumble, mumble\dots''
+  
+** Why does functional programming matter?
+\pause
+- hardware has changed
+  
+  \pause
+  + multi-core processors
+  \pause
+  + clusters
+
+\pause
+- computer languages have changed
+
+\pause
+- functional programming languages better exploit modern computer
+  hardware than imperative languages
+
+  \pause
+  + immutability of state (no shared mutable state)
+  \pause
+  + pure functions / ``referentially transparent'' (no side effects)
+  \pause
+  + higher-order functions (``first-class objects'')
+  \pause
+  + recursion (no ``loops'')
+  
+\pause
+- a sliding scale
+
+  \pause
+  + Turing: imperative
+  \pause
+  + Church: functional
+
 * Lambda Calculus: Theory
 ** Functions
 - Mathematics
