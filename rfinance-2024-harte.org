@@ -168,6 +168,14 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
   
 ** Why does functional programming matter?
 \pause
+- a sliding scale
+
+  \pause
+  + Turing: imperative
+  \pause
+  + Church: functional
+
+\pause
 - hardware has changed
   
   \pause
@@ -191,14 +199,6 @@ lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
   \pause
   + recursion (no ``loops'')
   
-\pause
-- a sliding scale
-
-  \pause
-  + Turing: imperative
-  \pause
-  + Church: functional
-
 \pause
 - scalability
 
