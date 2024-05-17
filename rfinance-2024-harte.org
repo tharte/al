@@ -659,6 +659,17 @@ The BNF form summarizes the grammar for the Lambda Calculus:
 #+latex: {\tiny Source: \cite{Revesz:88}}
   
 * Lambda Calculus: Implementation
+** R package: ~al~
+   
+https://github.com/tharte/al
+
+** R package: ~al~
+   
+    #+attr_latex: :width 0.50\linewidth
+    [[file:./img/church.png]]
+
+#+latex: {\tiny Source: https://en.wikipedia.org/wiki/Alonzo_Church}
+
 ** Booleans & branching
 - \onslide<2-> Truth and Falsity
 
