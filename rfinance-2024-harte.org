@@ -906,8 +906,7 @@ C3 |> .to.integer()
 - predecessor
 
   \begin{eqnarray*}
-    {\tt pred} &\bydefn& \lambda n.\lambda n(\lambda p. \lambda z.z({\tt succ}(p(T)))(p(T)))(\lambda z.z(C_0)(C_0))(F) \\
-                     &=& \lambda n.n\lambda p.\lambda z.({\tt succ}(p(T)))(p(T))(\lambda z.z(C_0)(C_0))(F)
+    {\tt pred} &\bydefn& \lambda n.\lambda n(\lambda p. \lambda z.z({\tt succ}(p(T)))(p(T)))(\lambda z.z(C_0)(C_0))(F) 
   \end{eqnarray*}
 
 \pause
