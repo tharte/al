@@ -1155,6 +1155,41 @@ $x$ ends up back at $x$ when $F$ is applied to $x$
     #+LATEX: \vspace{-0.5cm}
     : Error: C stack usage  9522372 is too close to the limit
 
+** Arithmetic series
+\pause
+    \begin{eqnarray*}
+        S_n = \sum_{i=0}^{i=n} i
+\pause
+            &=&
+            \begin{cases}
+                S_0 &= 0 \\
+                S_n &= n + S_{n-1}
+            \end{cases}
+    \end{eqnarray*}
+
+\pause
+\begin{align*}
+    F &\bydefn \lambda r.\lambda n.\mbox{\tt IF}(\mbox{\tt `zerop?`}n) (C_0) \bigl(\mbox{\tt add}(n)(r(\mbox{\tt pred}n))\bigr)
+\end{align*}
+
+\pause
+\vspace{-0.5cm}
+\begin{align*}
+    YFC_3 &\betared F(YF)C_3
+\end{align*}
+
+\pause
+    #+begin_src R :session *R* :exports both :results output :eval no
+    F<- (\(r) \(n) IF(`zerop?`(n)) (C0) (add(n)(r(pred(n))))) 
+
+    Y(F)(C3) |> .to.integer()
+    #+end_src
+
+\pause
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 6
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
