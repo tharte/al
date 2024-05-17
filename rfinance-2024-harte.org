@@ -1236,6 +1236,48 @@ $x$ ends up back at $x$ when $F$ is applied to $x$
     #+RESULTS:
     : [1] 6
 
+** Fibonacci: R
+\pause
+    \begin{align*}
+        F_n &=
+            \begin{cases}
+                F_0 &= 0 \\
+                F_1 &= 1 \\
+                F_n &= F_{n-1}+F_{n-2} 
+            \end{cases}
+    \end{align*}
+
+\pause
+#+begin_src R :session *R* :exports both :results output :eval no
+Y(\(r) \(n)
+    `zerop?`(n)(C0)
+    (`IF`(eq(n)(C1))
+	(C1)
+	(\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) -> fibonacci
+
+lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
+       \(n) cat(sprintf("%+2s: %+3s\n", n |> .to.integer(), fibonacci(n) |> .to.integer())))
+           -> dev.null
+#+end_src
+
+#+LATEX: {\tiny
+#+LATEX: \vspace{-0.5cm}
+#+RESULTS:
+#+begin_example
+    0:   0
+    1:   1
+    2:   1
+    3:   2
+    4:   3
+    5:   5
+    6:   8
+    7:  13
+    8:  21
+    9:  34
+   10:  55
+#+end_example
+#+LATEX: }
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
