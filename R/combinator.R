@@ -15,4 +15,5 @@
 #' sapply(
 #'   list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
 #'   \(x) cat(sprintf("%+2s: %+3s\n", .to.integer(x), .to.integer(`fibonacci`(x)))))-> dev.null
-`Y`<- \(f) (\(x) f(\(y) x(x)(y)))(\(x) f(\(y) x(x)(y)))
+#' `Y`<- \(f) (\(x) f(\(y) x(x)(y)))(\(x) f(\(y) x(x)(y)))
+`Y`<- \(y) (\(x) y(x(x))) (\(x) y(x(x)))
