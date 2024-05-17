@@ -51,10 +51,10 @@
 #' @author Thomas P. Harte
 #' @export
 #' @examples
-#' .to.logical(lt(C1)(C1)) # FALSE
-#' .to.logical(lt(C1)(C2)) # TRUE
-#' .to.logical(lt(C2)(C1)) # FALSE
-#' .to.logical(lt(C2)(C2)) # FALSE
+#' .to.logical(eq(C1)(C1)) # TRUE
+#' .to.logical(eq(C1)(C2)) # FALSE
+#' .to.logical(eq(C2)(C1)) # FALSE
+#' .to.logical(eq(C2)(C2)) # TRUE
 `eq`<- \(n) \(m) and(le(n)(m))(le(m)(n))
 
 
