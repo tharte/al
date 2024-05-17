@@ -870,13 +870,13 @@ C3 |> .to.integer()
 \pause
 \vspace{-0.5cm}
 \begin{eqnarray*}
-    \underbrace{(\lambda f.\lambda x. x)}_{\scriptsize n=C_0}}\underbrace{(\lambda x.x+1)}_f \underbrace{(0)}_x & \betared & 0 \\[2mm]
+    \underbrace{(\lambda f.\lambda x. x)}_{\scriptsize n=C_0}\underbrace{(\lambda x.x+1)}_f \underbrace{(0)}_x & \betared & 0 \\[2mm]
 \pause
-    \underbrace{(\lambda f.\lambda x. f(x))}_{\scriptsize n=C_1}}(\lambda x.x+1)(0) & \betared & \underbrace{(\lambda x.x+1)}_f\underbrace{(0)}_x \\
+    \underbrace{(\lambda f.\lambda x. f(x))}_{\scriptsize n=C_1}(\lambda x.x+1)(0) & \betared & \underbrace{(\lambda x.x+1)}_f\underbrace{(0)}_x \\
 \pause
      & \betared & 1 \\[2mm]
 \pause
-    \bigl(\underbrace{(\lambda f.\lambda x. f(f(x)))}_{\scriptsize n=C_2}}(\lambda x.x+1)\bigr)(0) & \betared & \underbrace{(\lambda x.x+1)}_f\underbrace{(\lambda x.x+1)}_f\underbrace{(0)}_x \\
+    \bigl(\underbrace{(\lambda f.\lambda x. f(f(x)))}_{\scriptsize n=C_2}(\lambda x.x+1)\bigr)(0) & \betared & \underbrace{(\lambda x.x+1)}_f\underbrace{(\lambda x.x+1)}_f\underbrace{(0)}_x \\
 \pause
                                                                                                          & \betared & \underbrace{(\lambda x.(\lambda x.x+1)+1)}_{f(f(x))}\underbrace{(0)}_x \\
 \pause
