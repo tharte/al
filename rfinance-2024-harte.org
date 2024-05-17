@@ -1130,6 +1130,31 @@ $x$ in $F x = x$ is called a /fixed point/ of $F$
 \pause
 $x$ ends up back at $x$ when $F$ is applied to $x$
 
+** Infinite loop
+\pause
+\vspace{-0.5cm}
+\begin{eqnarray*}
+    YI &=& I(YI) \\
+\pause
+       &=& (\lambda x.x) \bigl(Y (\lambda x.x)\bigr) \\
+\pause
+       & & \lambda [x:= Y (\lambda x.x)].x \\
+\pause
+       &\betared&  Y (\lambda x.x) \\ 
+\pause
+       &=&  Y I 
+\end{eqnarray*}
+
+\pause
+    #+begin_src R :session *R* :exports both :results output :eval no
+    (\(y) (\(x) y(x(x))) (\(x) y(x(x)))) (\(x) x)
+    #+end_src
+
+\pause
+    #+RESULTS:
+    #+LATEX: \vspace{-0.5cm}
+    : Error: C stack usage  9522372 is too close to the limit
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
