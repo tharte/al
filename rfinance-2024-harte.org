@@ -887,7 +887,7 @@ C3 |> .to.integer()
 \pause
 - successor
 
-    $$ {\tt succ} \bydefn \lambda n.\lambda f.\lambda x. f(nfx) = \lambda nfx.f((nf)x)$$
+    $$ {\tt succ} \bydefn \lambda n.\lambda f.\lambda x. f((nf)x)$$
 
 \pause
     #+begin_src R :session :exports both :results output :eval no
