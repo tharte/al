@@ -1099,6 +1099,37 @@ C3 |> .to.integer()
     #+end_example
     #+LATEX: }
 
+** Recursion with the Y-Combinator
+\pause
+the Y-combinator: Curry's paradoxical combinator
+
+    $$ {\tt Y} \bydefn \lambda y.\bigl(\lambda x.y(xx)\bigr)\bigl(\lambda x.y(xx)\bigr) $$
+
+\pause
+apply $Y$ to an arbitrary function $F$
+\pause
+\begin{eqnarray*}
+    YF &=& \Big(\lambda y.\bigl(\lambda x.y(xx)\bigr)\bigl(\lambda x.y(xx)\bigr)\Big) F \\
+\pause
+       &=& \lambda [y:= F].\bigl(\lambda x.y(xx)\bigr)\bigl(\lambda x.y(xx)\bigr) \\
+\pause
+       &\betared& \bigl(\lambda x.F(xx)\bigr)\bigl(\lambda x.F(xx)\bigr)
+\pause
+       \;\;\textcolor{blue}{= YF} \\
+\pause
+       &=& \lambda [x:=\lambda x.F(xx)].F(xx) \\
+\pause
+       &\betared& F\textcolor{blue}{\bigl(\lambda x.F(xx)\bigr)\bigl(\lambda x.F(xx)\bigr)} \\
+\pause
+       &=& F(YF)
+\end{eqnarray*}
+
+\pause
+$x$ in $F x = x$ is called a /fixed point/ of $F$
+
+\pause
+$x$ ends up back at $x$ when $F$ is applied to $x$
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
