@@ -1,4 +1,6 @@
-# al 1.0.0
+# al 1.0.1
+
+* v_1.0.1     ::  2024-05-18: R/Finance 2024 conference slides 
 
 * v_1.0.0     ::  2024-05-17: first release
 
