@@ -930,7 +930,7 @@ C3 |> .to.integer()
 \pause
 - addition
 
-    $$ {\tt add} \bydefn \lambda nm.(m\,{\tt succ})n$$
+    $$ {\tt add} \bydefn \lambda n.\lambda m.(m\,{\tt succ})n$$
 
 \pause
     #+begin_src R :session :exports both :results output :eval no
@@ -948,7 +948,7 @@ C3 |> .to.integer()
 \pause
 - subtraction
 
-    $$ {\tt sub} \bydefn \lambda nm.(m\,\mbox{pred})n$$
+  $$ {\tt sub} \bydefn \lambda n.\lambda m.(m\,\mbox{pred})n$$
 
 \pause
     #+begin_src R :session :exports both :results output :eval no
@@ -967,7 +967,7 @@ C3 |> .to.integer()
 \pause
 - multiplication
 
-    $$ {\tt mul} \bydefn \lambda nm.m({\tt add} n)C_0$$
+    $$ {\tt mul} \bydefn \lambda n.\lambda m.m({\tt add} n)C_0$$
 
 \pause
     #+begin_src R :session :exports both :results output :eval no
@@ -985,7 +985,7 @@ C3 |> .to.integer()
 \pause
 - exponentiation
 
-    $$ {\tt exp} \bydefn \lambda nm.mn$$
+    $$ {\tt exp} \bydefn \lambda n.\lambda m.mn$$
 
 \pause
     #+begin_src R :session :exports both :results output :eval no
@@ -1024,7 +1024,7 @@ C3 |> .to.integer()
 \pause
 - less-than-or-equal
 
-    $$ {\tt le} \bydefn \lambda nm.{\tt zerop?}({\tt sub}(n)(m))$$
+    $$ {\tt le} \bydefn \lambda n.\lambda m.{\tt zerop?}({\tt sub}(n)(m))$$
 
 \pause
     #+begin_src R :session :exports both :results output :eval no
@@ -1047,7 +1047,7 @@ C3 |> .to.integer()
 \pause
 - is-equal
 
-    $$ {\tt eq} \bydefn \lambda nm.{\tt and}({\tt le}(n)(m))({\tt le}(n)(m))$$
+    $$ {\tt eq} \bydefn \lambda n.\lambda m.{\tt and}({\tt le}(n)(m))({\tt le}(n)(m))$$
 
 \pause
     #+begin_src R :session :exports both :results output :eval no
