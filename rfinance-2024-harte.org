@@ -674,10 +674,10 @@ https://github.com/tharte/al
 - \onslide<2-> Truth and Falsity
 
     \onslide<3-> 
-    $${\tt true} \bydefn T \alphaeq \lambda x\lambda y.x$$
+    $${\tt true} \bydefn T \alphaeq \lambda x.\lambda y.x$$
 
     \onslide<4-> 
-    $${\tt false} \bydefn F \alphaeq \lambda x\lambda y.y$$
+    $${\tt false} \bydefn F \alphaeq \lambda x.\lambda y.y$$
 
 - \onslide<5-> if-then-else (the Branching Combinator)
 
@@ -685,30 +685,32 @@ https://github.com/tharte/al
     $${\tt IF} \bydefn p (ab)$$
 
     \onslide<7-> 
-    $$p (ab) \betared T (ab) \alphaeq (\lambda x\lambda y.x) (ab) \betared a$$
+    $$p (ab) \betared T (ab) \alphaeq (\lambda x.\lambda y.x) (ab) \betared a$$
 
     \onslide<8-> 
-    $$p (ab) \betared F (ab) \alphaeq (\lambda x\lambda y.y) (ab) \betared b$$
+    $$p (ab) \betared F (ab) \alphaeq (\lambda x.\lambda y.y) (ab) \betared b$$
 
 ** Verify that branching works
-\onslide<2-> 
+\pause
 #+begin_src R :session :exports both :results output :eval no
 IF(true)(\(a) a)(\(b) b) 
 #+end_src
 
+\pause
 #+RESULTS:
 : \(a) a
 
-\onslide<3-> 
+\pause
 #+begin_src R :session :exports both :results output :eval no
 IF(false)(\(a) a)(\(b) b) 
 #+end_src
 
+\pause
 #+RESULTS:
 : \(b) b
 
 ** Switching between worlds: ~.to.logical~
-\onslide<2-> 
+\pause
 #+begin_src R :session :exports both :results output :eval no
 .to.logical
 #+end_src
