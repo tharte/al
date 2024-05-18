@@ -741,7 +741,7 @@ false |> .to.logical()
 
 ** Logic: And 
     \onslide<2-> 
-    $${\tt and} \bydefn \lambda x\lambda y.xyF$$
+    $${\tt and} \bydefn \lambda x.\lambda y.xyF$$
 
     \onslide<3-> 
     $$xyF \betared (FT)F \betared F$$
@@ -774,7 +774,7 @@ false |> .to.logical()
 
 ** Logic: Or
     \onslide<2-> 
-    $${\tt or} \bydefn \lambda x\lambda y.xTy$$
+    $${\tt or} \bydefn \lambda x.\lambda y.xTy$$
 
     \onslide<3-> 
     $$xTy \betared (F)T(T) \betared T$$
