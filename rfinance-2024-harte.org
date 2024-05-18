@@ -721,19 +721,21 @@ IF(false)(\(a) a)(\(b) b)
 : <bytecode: 0x55fc452616e0>
 : <environment: namespace:al>
 
-\onslide<3-> 
+\pause
 #+begin_src R :session :exports both :results output :eval no
 true |> .to.logical()
 #+end_src
 
+\pause
 #+RESULTS:
 : [1] TRUE
 
-\onslide<4-> 
+\pause
 #+begin_src R :session :exports both :results output :eval no
 false |> .to.logical()
 #+end_src
 
+\pause
 #+RESULTS:
 : [1] FALSE
 
