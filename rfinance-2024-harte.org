@@ -28,6 +28,7 @@
 #+latex_header:  \usetikzlibrary{arrows}
 #+latex_header:  \usetikzlibrary{matrix}
 
+#+latex_header:  \usepackage{syntax}
 #+latex_header:  \usepackage{textgreek}
 #+latex_header:  \usepackage[makeroom]{cancel}
 
@@ -44,16 +45,15 @@
 # Source: https://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex
 #+latex_header:  \def\checkmark{\textcolor{green}{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}}
 
-
+#+latex_header:  \newcommand{\alphaeq}{\stackrel{\alpha}{=}}
+#+latex_header:  \newcommand{\betared}{\stackrel{\beta}{\rightarrow}}
 
 # 
 # SET-UP
 #
-#+BEGIN_SRC R :session :exports none :results silent :eval no
-source("/home/tharte/dot/stats/cache/rfinance-2019/rfinance-2019-functions.R")
-.init.proj(set.proj.dir=TRUE)
-#+END_SRC
-
+#+begin_src R :session :exports none :results silent :eval no
+# none
+#+end_src
 
 * Disclaimer
 ** Disclaimer
@@ -78,7 +78,1184 @@ source("/home/tharte/dot/stats/cache/rfinance-2019/rfinance-2019-functions.R")
     EXPECTATIONS OF FINANCIAL OR BUSINESS RESULTS.
 #+end_export
 
-* Overview
+* Motivation
+** What is this?
+#+begin_src R :session *R* :exports both :results output :eval no
+Y(\(r) \(n)
+    `zerop?`(n)(C0)
+    (`IF`(eq(n)(C1))
+	(C1)
+	(\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) 
+#+end_src
+
+#+RESULTS:
+: 
+: 
+
+** It's R!
+#+begin_src R :session *R* :exports both :results output :eval no
+Y(\(r) \(n)
+    `zerop?`(n)(C0)
+    (`IF`(eq(n)(C1))
+	(C1)
+	(\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) (C10) |> .to.integer ()
+#+end_src
+
+#+RESULTS:
+: 
+: [1] 55
+
+** Fibonacci: R
+#+begin_src R :session *R* :exports both :results output :eval no
+Y(\(r) \(n)
+    `zerop?`(n)(C0)
+    (`IF`(eq(n)(C1))
+	(C1)
+	(\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) -> fibonacci
+
+lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
+       \(n) cat(sprintf("%+2s: %+3s\n", n |> .to.integer(), fibonacci(n) |> .to.integer())))
+           -> dev.null
+#+end_src
+
+#+latex: \vspace{-0.5cm}
+#+RESULTS:
+#+begin_example
+ 0:   0
+ 1:   1
+ 2:   1
+ 3:   2
+ 4:   3
+ 5:   5
+ 6:   8
+ 7:  13
+ 8:  21
+ 9:  34
+10:  55
+#+end_example
+
+** Fibonacci: Lisp
+#+begin_src emacs-lisp :exports both :results output :eval yes
+(defun fibonacci (n)
+    (if (or (= n 0) (= n 1)) n
+	(+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
+
+(let ((x '(0 1 2 3 4 5 6 7 8 9 10)))
+(mapcar (lambda (x) (princ (format "%2s:%+3s\n" x (fibonacci x)))) x))
+#+end_src
+
+#+RESULTS:
+#+begin_example
+ 0:  0
+ 1:  1
+ 2:  1
+ 3:  2
+ 4:  3
+ 5:  5
+ 6:  8
+ 7: 13
+ 8: 21
+ 9: 34
+10: 55
+#+end_example
+
+** What is functional programming?
+- \onslide<2-> ``use functions, instead of objects\dots''
+  
+- \onslide<3-> ``no side effects\dots''
+  
+- \onslide<4-> ``mumble, mumble\dots''
+  
+** Why does functional programming matter?
+\pause
+- a sliding scale
+
+  \pause
+  + Turing: imperative
+  \pause
+  + Church: functional
+
+\pause
+- hardware has changed
+  
+  \pause
+  + multi-core processors
+  \pause
+  + clusters
+
+\pause
+- computer languages have changed
+
+\pause
+- functional programming languages better exploit modern computer
+  hardware than imperative languages
+
+  \pause
+  + immutability of state (no shared mutable state)
+  \pause
+  + pure functions / ``referentially transparent'' (no side effects)
+  \pause
+  + higher-order functions (``first-class objects'')
+  \pause
+  + recursion (no ``loops'')
+  
+\pause
+- scalability
+
+** R
+
+    #+attr_latex: :width 0.7\linewidth
+    [[file:./img/ihaka-gentleman.png]]
+
+#+latex: {\tiny Source: \cite{Ihaka:96}}
+
+** Scheme
+
+    #+attr_latex: :width 0.95\linewidth
+    [[file:./img/sussman-steele-scheme-75.png]]
+
+#+latex: {\tiny Source: \cite{Sussman:75}}
+
+** Functional languages
+\pause
+    #+attr_latex: :width 0.50\linewidth
+    [[file:./img/haskell.png]]
+
+\pause
+    #+attr_latex: :width 0.50\linewidth
+    [[file:./img/scala.png]]
+
+* Lambda Calculus: Theory
+** Functions
+- Mathematics
+  
+  $$x \mapsto x^2$$
+
+- \onslide<2-> Haskell
+
+    #+begin_src haskell :exports both :results output :eval no
+    (\x -> x^2) 3
+    #+end_src
+
+    #+RESULTS:
+    : 9
+
+- \onslide<3-> R
+
+    #+begin_src R :session *R* :exports both :results output :eval no
+    (\(x) x^2) (3)
+    #+end_src
+
+    #+RESULTS:
+    : [1] 9
+
+** Functions
+- Mathematics
+  
+  $$x \mapsto x^2$$
+
+- Haskell
+
+    #+begin_src haskell :exports both :results output :eval no
+    (\x -> x^2) 3
+    #+end_src
+
+    #+RESULTS:
+    : 9
+
+- R
+
+    #+begin_src R :session *R* :exports both :results output :eval no
+    (function(x) x^2) (3)
+    #+end_src
+
+    #+RESULTS:
+    : [1] 9
+
+** Haskell: ~Int~
+- Mathematics: constrain $x$
+  
+  $$f: x \mapsto x^2,\quad\forall x\in\ZZ$$
+
+- \onslide<2-> type is metadata
+
+    #+begin_src haskell :exports both :results output :eval no
+    :{
+      f :: Int -> Int
+      f = \x -> x^2
+    :}
+    f 3
+    #+end_src
+
+    #+RESULTS:
+    : 9
+
+** Haskell: ~Double~
+- Mathematics: constrain $x$
+  
+  $$f : x \mapsto x^2,\quad\forall x\in\RR$$
+
+- \onslide<2-> type is metadata
+
+    #+begin_src haskell :exports both :results output :eval no
+    :{
+      f :: Double -> Double
+      f = \x -> x^2
+    :}
+    f 3.0
+    #+end_src
+
+    #+RESULTS:
+    : 9.0
+
+** Haskell: ~Num~
+- Mathematics: what if there is no constraint on $x$?
+  
+  $$x \mapsto x^2,\quad\forall x\in\;???$$
+
+- \onslide<2-> Haskell infers type
+
+    #+begin_src haskell :exports both :results output :eval no
+    :type \x -> x^2
+    #+end_src
+
+    \pause
+    
+    #+RESULTS:
+    : \x -> x^2 :: Num a => a -> a
+
+- \onslide<3-> type is metadata
+
+    #+begin_src haskell :exports both :results output :eval no
+    :{
+      f :: Num a => a -> a
+      f x = x^2
+    :}
+    f 3
+    #+end_src
+
+    #+RESULTS:
+    : 9
+
+** Haskell: What is ~Num~?
+- \onslide<2-> ~Num~ is a /type class/
+
+    #+begin_src haskell :exports both :results output :eval no
+    :info Num
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+RESULTS:
+    #+begin_example
+    class Num a where
+      (+) :: a -> a -> a
+      (-) :: a -> a -> a
+      (*) :: a -> a -> a
+      negate :: a -> a
+      abs :: a -> a
+      signum :: a -> a
+      fromInteger :: Integer -> a
+      {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+	    -- Defined in ‘GHC.Num’
+    instance Num Word -- Defined in ‘GHC.Num’
+    instance Num Integer -- Defined in ‘GHC.Num’
+    instance Num Int -- Defined in ‘GHC.Num’
+    instance Num Float -- Defined in ‘GHC.Float’
+    instance Num Double -- Defined in ‘GHC.Float’
+    #+end_example
+    #+LATEX: }
+
+** Haskell: What is ~Int~?
+- ~Int~ is a /data constructor/: it is an /instance/ of type class ~Num~
+
+    #+begin_src haskell :exports both :results output :eval no
+    :info Int
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+RESULTS:
+    #+begin_example
+    data Int = GHC.Types.I# GHC.Prim.Int# 	-- Defined in ‘GHC.Types’
+    instance Eq Int -- Defined in ‘GHC.Classes’
+    instance Ord Int -- Defined in ‘GHC.Classes’
+    instance Enum Int -- Defined in ‘GHC.Enum’
+    instance Num Int -- Defined in ‘GHC.Num’
+    instance Real Int -- Defined in ‘GHC.Real’
+    instance Show Int -- Defined in ‘GHC.Show’
+    instance Integral Int -- Defined in ‘GHC.Real’
+    instance Bounded Int -- Defined in ‘GHC.Enum’
+    instance Read Int -- Defined in ‘GHC.Read’
+    #+end_example
+    #+LATEX: }
+
+** Haskell: What is ~Double~?
+- ~Double~ is a /data constructor/: it is an /instance/ of type class ~Num~
+
+    #+begin_src haskell :exports both :results output :eval no
+    :info Double
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+RESULTS:
+    #+begin_example
+    data Double = GHC.Types.D# GHC.Prim.Double#
+	    -- Defined in ‘GHC.Types’
+    instance Eq Double -- Defined in ‘GHC.Classes’
+    instance Ord Double -- Defined in ‘GHC.Classes’
+    instance Enum Double -- Defined in ‘GHC.Float’
+    instance Floating Double -- Defined in ‘GHC.Float’
+    instance Fractional Double -- Defined in ‘GHC.Float’
+    instance Num Double -- Defined in ‘GHC.Float’
+    instance Real Double -- Defined in ‘GHC.Float’
+    instance RealFloat Double -- Defined in ‘GHC.Float’
+    instance RealFrac Double -- Defined in ‘GHC.Float’
+    instance Show Double -- Defined in ‘GHC.Float’
+    instance Read Double -- Defined in ‘GHC.Read’
+    #+end_example
+    #+LATEX: }
+
+** Back to functions...
+- Mathematics
+  
+  $$f : x \mapsto x^2$$
+
+- R
+
+    #+begin_src R :session *R* :exports both :results output :eval no
+    f<- \(x) x^2
+    f(3)
+    #+end_src
+
+    #+RESULTS:
+    : 
+    : [1] 9
+
+** What if we /only/ had anonymous functions? (no /function names/)
+- Mathematics
+  
+  $$x \mapsto x^2$$
+
+- R
+
+    #+begin_src R :session *R* :exports both :results output :eval no
+    (\(x) x^2) (3)
+    #+end_src
+
+    #+RESULTS:
+    : [1] 9
+
+** What if we /only/ had anonymous functions? (no /numerals/...)
+- Mathematics
+  
+  $$x \mapsto x$$
+
+- R
+
+    #+begin_src R :session *R* :exports both :results output :eval no
+    \(x) x
+    #+end_src
+
+    #+RESULTS:
+    : \(x) x
+
+** Lambda terms
+- \onslide<2-> Lambda Calculus has three basic components, or /lambda terms/
+
+  1. \onslide<3-> $\lambda$ expressions
+  2. \onslide<4-> variables
+  3. \onslide<5-> abstractions
+     
+- \onslide<6-> $\lambda$ expressions form a superset $\Lambda$
+
+  \onslide<7->
+  $$\mbox{$\lambda$ expressions} \supset \{ \mbox{variables}, \mbox{abstractions} \}$$
+
+- \onslide<8-> variables
+
+  + \onslide<9-> no meaning or value
+  + \onslide<10-> just a /name/ for an input to a function
+  + \onslide<11-> /e.g./ $x$, $y$, $z$
+
+- \onslide<12-> abstractions
+
+  + \onslide<13-> an abstraction is a /function/ (usually called a ``lambda'')
+  + \onslide<14-> two parts (separated by a dot):
+    $$\underbrace{\lambda x}_{\mbox{\scriptsize head}}. \underbrace{x}_{\mbox{\scriptsize body}}$$
+  + \onslide<15-> the body is a $\lambda$ expression
+    \onslide<16->
+    $$\underbrace{\lambda x}_{\mbox{\scriptsize head}}. \underbrace{\mbox{$\lambda$ expression}}_{\mbox{\scriptsize body}}$$
+
+** Application
+- \onslide<2-> the action part of Lambda Calculus: evaluate (/i.e./ reduce) lambda terms
+
+  + \onslide<3-> bind the parameter to the concrete argument
+
+    \onslide<4->
+    $$(\lambda\underbrace{x}_{\mbox{\scriptsize parameter}}. \underbrace{x}_{\mbox{\scriptsize body}})\,\underbrace{1}_{\mbox{\scriptsize argument}}$$
+
+  + \onslide<5-> the argument is the specific lambda term that the abstraction (/i.e./ the lambda) is applied to
+
+  + \onslide<6-> a /computation/ is the repeated application of lambdas to arguments until there are no applications left to perform
+
+- \onslide<7-> simplest example of computation: the identity
+
+    \onslide<8->
+    $$(\lambda x. x)\,1$$
+
+    \onslide<9->
+    $$(\lambda\underbrace{x}_{\mbox{\scriptsize parameter}}. \underbrace{x}_{\mbox{\scriptsize body}})\,\underbrace{1}_{\mbox{\scriptsize argument}}$$
+
+    \onslide<10->
+    $$\lambda\underbrace{[x:= 1]}_{\mbox{\scriptsize parameter}}. \underbrace{x}_{\mbox{\scriptsize body}}$$
+
+    \onslide<11->
+    $$\underbrace{1}_{\mbox{\scriptsize reduced}}$$
+     
+** $\alpha$ equivalence, $\beta$ reduction
+\pause
+- alpha equivalence
+
+  \pause
+  $\lambda x.x \alphaeq \underbrace{\lambda y.y}_{\mbox{\scriptsize same thing}}$
+
+  \pause
+  $\lambda x.xy \alphaeq \underbrace{\lambda x.xz}_{\mbox{\scriptsize same thing}}$
+
+\pause
+- beta reduction
+    \pause
+
+	1. application: substitute the input $\lambda$ expression for all instances of bound variables
+	   within the body of the abstraction
+
+	2. eliminate the head of the abstraction (its only purpose is to bind a variable)
+
+    \pause
+    \begin{eqnarray*}
+	(\lambda z.z)(\lambda y.y) & \alphaeq & \underbrace{(\lambda x.x)}_{\scriptsize\mbox{$\alpha$ equivalence}}(\lambda y.y) \\[2mm]
+    \pause
+			    &=& \lambda [x:= \lambda y.y].x \\[2mm]
+    \pause
+			    &\betared & \underbrace{\lambda y.y}_{\scriptsize\mbox{reduced}}
+    \end{eqnarray*}
+
+** Free variables
+\pause
+- here, $z$ is a /free variable/
+
+  \pause
+  + $\bigl( (\lambda x.x)(\lambda y.y) \bigr)\,z$
+
+  \pause
+  + $\beta$ reduce the $\lambda$ expression:
+
+    \pause
+    \begin{eqnarray*}
+	 \bigl( (\lambda x.x)(\lambda y.y) \bigr)\,z &=& \bigl( \lambda [x:= \lambda y.y].x \bigr)\,z \\[2mm]
+    \pause
+                                                     &\betared & (\lambda y.y)\,z \\[2mm]
+    \pause
+                                                     &=& \lambda [y:= z].y \\[2mm]
+    \pause
+                                                     &\betared & z
+    \end{eqnarray*}
+
+\pause
+- here, $y$ is a /free variable/
+
+  \pause
+  + $\lambda x.xy$
+
+** Combinators
+- \onslide<2-> combinators serve to combine the arguments they are given,
+  without introducing new values (/i.e./ free variables)
+
+- \onslide<3-> combinators are $\lambda$ expressions in which there are /no/ free variables
+
+- \onslide<4-> examples
+
+    + \onslide<5-> combinator (every $\lambda$ expression in the body occurs in the head):
+      $$\lambda x. x$$
+
+    + \onslide<6-> combinator (every $\lambda$ expression in the body occurs in the head):
+      $$\underbrace{\lambda xy}_{\scriptsize\mbox{note}}\!\!.x = \lambda x.(\lambda y. x) = \underbrace{\lambda x.\lambda y.}_{\scriptsize\mbox{``currying''}} \!\!\!x $$
+
+    + \onslide<7-> /not/ a combinator ($y$ is a free variable: it does not occur in the head):
+      $$\lambda x. y$$
+
+** Combinators in use: select /left/
+\pause
+\begin{eqnarray*}
+      (\lambda xy. x)(ab) &=& (\lambda x. \lambda y. x)(ab) \\[2mm]
+\pause
+                          &=& \bigl((\lambda x. \lambda y. x)(a)\bigr)(b) \\[2mm]
+\pause
+                          &=& (\lambda [x:= a]. \lambda y. x)(b) \\[2mm]
+\pause
+                          &\betared& (\lambda y. a)(b) \\[2mm]
+\pause
+                          &=& \lambda [y:= b]. a \\[2mm]
+\pause
+                          &\betared& a
+\end{eqnarray*}
+
+** Combinators in use: select /right/
+\pause
+\begin{eqnarray*}
+      (\lambda xy. y)(ab) &=& (\lambda x. \lambda y. y)(ab) \\[2mm]
+\pause
+                          &=& \bigl((\lambda x. \lambda y. y)(a)\bigr)(b) \\[2mm]
+\pause
+                          &=& (\lambda [x:= a]. \lambda y. y)(b) \\[2mm]
+\pause
+                          &\betared& (\lambda y. y)(b) \\[2mm]
+\pause
+                          &=& \lambda [y:= b]. b \\[2mm]
+\pause
+                          &\betared& b
+\end{eqnarray*}
+
+** Divergence: non-terminating $\lambda$ expressions
+- \onslide<2-> consider
+
+      $$(\lambda x. xx)(\lambda x. xx)$$
+      
+      \onslide<3->
+      $$\lambda [x:= (\lambda x. xx)]. xx$$
+
+      \onslide<4->
+      $$(\lambda x. xx)(\lambda x. xx)$$
+      
+- \onslide<5-> 
+
+  some $\lambda$ expressions clearly disallow reduction to normal form:
+  such $\lambda$ expressions /diverge/ 
+
+- \onslide<6-> the $\lambda$ expression $(\lambda x. xx)(\lambda x. xx)$ is called ``omega''
+
+** Backus-Naur Form
+# Source: https://tex.stackexchange.com/questions/24886/which-package-can-be-used-to-write-bnf-grammars/24934#24934
+
+The BNF form summarizes the grammar for the Lambda Calculus:
+
+#+latex: {\mbox{}\tiny\newline}
+
+    #+latex: \setlength{\grammarparsep}{20pt plus 1pt minus 1pt} % increase separation between rules
+    #+latex: \setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
+
+    \begin{grammar}
+
+	<$\lambda$ expression> ::= <variable> 
+			       \alt <application> 
+			       \alt <abstraction> 
+
+	<application> ::= (<$\lambda$ expression>) <$\lambda$ expression>
+
+	<abstraction> ::= $\lambda$ <variable>. <$\lambda$ expression>
+
+    \end{grammar}
+
+#+latex: {\mbox{}\tiny\newline}
+#+latex: {\tiny Source: \cite{Revesz:88}}
+  
+* Lambda Calculus: Implementation
+** R package: ~al~
+   
+\pause
+https://github.com/tharte/al
+
+\pause
+Title: An implementation of the Lambda Calculus in R
+
+\pause
+Description: R is based on S and Scheme: syntactically, R has the appearance of S,
+    but its implementation is similar to Scheme. Scheme is "An Interpreter for Extended
+    Lambda Calculus".  Insight into the Lambda Calculus from within R therefore gives
+    us a fresh understanding of R's roots in functional programming. The Lambda Calculus
+    was created by the American logician Alonzo Church; ~al~ is named in his honor.
+
+** R package: ~al~
+   
+    #+attr_latex: :width 0.50\linewidth
+    [[file:./img/church.png]]
+
+#+latex: {\tiny Source: https://en.wikipedia.org/wiki/Alonzo_Church}
+
+** Booleans & branching
+- \onslide<2-> Truth and Falsity
+
+    \onslide<3-> 
+    $${\tt true} \bydefn T \alphaeq \lambda x.\lambda y.x$$
+
+    \onslide<4-> 
+    $${\tt false} \bydefn F \alphaeq \lambda x.\lambda y.y$$
+
+- \onslide<5-> if-then-else (the Branching Combinator)
+
+    \onslide<6-> 
+    $${\tt IF} \bydefn p (ab)$$
+
+    \onslide<7-> 
+    $$p (ab) \betared T (ab) \alphaeq (\lambda x.\lambda y.x) (ab) \betared a$$
+
+    \onslide<8-> 
+    $$p (ab) \betared F (ab) \alphaeq (\lambda x.\lambda y.y) (ab) \betared b$$
+
+** Verify that branching works
+\pause
+#+begin_src R :session :exports both :results output :eval no
+IF(true)(\(a) a)(\(b) b) 
+#+end_src
+
+\pause
+#+RESULTS:
+: \(a) a
+
+\pause
+#+begin_src R :session :exports both :results output :eval no
+IF(false)(\(a) a)(\(b) b) 
+#+end_src
+
+\pause
+#+RESULTS:
+: \(b) b
+
+** Switching between worlds: ~.to.logical~
+\pause
+#+begin_src R :session :exports both :results output :eval no
+.to.logical
+#+end_src
+
+#+RESULTS:
+: function (b) 
+: (IF(b)(TRUE))(FALSE)
+: <bytecode: 0x55fc452616e0>
+: <environment: namespace:al>
+
+\pause
+#+begin_src R :session :exports both :results output :eval no
+true |> .to.logical()
+#+end_src
+
+\pause
+#+RESULTS:
+: [1] TRUE
+
+\pause
+#+begin_src R :session :exports both :results output :eval no
+false |> .to.logical()
+#+end_src
+
+\pause
+#+RESULTS:
+: [1] FALSE
+
+** Logic: And 
+    \onslide<2-> 
+    $${\tt and} \bydefn \lambda x.\lambda y.xyF$$
+
+    \onslide<3-> 
+    $$xyF \betared (FT)F \betared F$$
+
+    \onslide<4-> 
+    \vspace{-.5cm}
+    $$xyF \betared (FF)F \betared F$$
+
+    \onslide<5-> 
+    \vspace{-.5cm}
+    $$xyF \betared (TF)F \betared F$$
+
+    \onslide<6-> 
+    \vspace{-.5cm}
+    $$xyF \betared (TT)F \betared T$$
+
+    \onslide<7-> 
+    #+begin_src R :session :exports both :results output :eval no
+    and(false)(true) |> .to.logical()
+    and(false)(false) |> .to.logical()
+    and(true)(false) |> .to.logical()
+    and(true)(true) |> .to.logical()
+    #+end_src
+
+    #+RESULTS:
+    : [1] FALSE
+    : [1] FALSE
+    : [1] FALSE
+    : [1] TRUE
+
+** Logic: Or
+    \onslide<2-> 
+    $${\tt or} \bydefn \lambda x.\lambda y.xTy$$
+
+    \onslide<3-> 
+    $$xTy \betared (F)T(T) \betared T$$
+
+    \onslide<4-> 
+    \vspace{-.5cm}
+    $$xTy \betared (F)T(F) \betared F$$
+
+    \onslide<5-> 
+    \vspace{-.5cm}
+    $$xTy \betared (T)T(F) \betared T$$
+
+    \onslide<6-> 
+    \vspace{-.5cm}
+    $$xTy \betared (T)T(T) \betared T$$
+
+    \onslide<7-> 
+    #+begin_src R :session :exports both :results output :eval no
+    or(false)(true) |> .to.logical()
+    or(false)(false) |> .to.logical()
+    or(true)(false) |> .to.logical()
+    or(true)(true) |> .to.logical()
+    #+end_src
+
+    #+RESULTS:
+    : [1] TRUE
+    : [1] FALSE
+    : [1] TRUE
+    : [1] TRUE
+
+** Logic: Not
+    \onslide<2-> 
+    $${\tt not} \bydefn pFT$$
+
+    \onslide<3-> 
+    $$pFT \betared (F)FT \betared T$$
+
+    \onslide<4-> 
+    \vspace{-.5cm}
+    $$pFT \betared (T)FT \betared F$$
+
+    \onslide<5-> 
+    #+begin_src R :session :exports both :results output :eval no
+    not(false) |> .to.logical()
+    not(true) |> .to.logical()
+    #+end_src
+
+    #+RESULTS:
+    : [1] TRUE
+    : [1] FALSE
+
+** Church Numerals
+\begin{eqnarray*}
+    {\tt C0} &\bydefn& C_0 \alphaeq \lambda f.\lambda x. x \alphaeq \lambda x.\lambda y.y = {\tt false} \\[2mm]
+\pause
+    {\tt C1} &\bydefn& C_1 \alphaeq \lambda f.\lambda x. f(x) \\[2mm]
+\pause
+    {\tt C2} &\bydefn& C_2 \alphaeq \lambda f.\lambda x. f(f(x)) \\[2mm]
+\pause
+    {\tt C3} &\bydefn& C_3 \alphaeq \lambda f.\lambda x. f(f(f(x))) \\[2mm]
+\pause
+             &\vdots&  \\[2mm]
+\pause
+             &\bydefn& C_N \alphaeq \lambda f.\lambda x. f^N(x) 
+\end{eqnarray*}
+
+** Switching between worlds: ~.to.integer~
+\onslide<2-> 
+#+begin_src R :session :exports both :results output :eval no
+.to.integer
+#+end_src
+
+#+RESULTS:
+: function (n) 
+: n(function(x) x + 1)(0)
+: <bytecode: 0x55fc442ceef0>
+: <environment: namespace:al>
+
+\onslide<3-> 
+#+begin_src R :session :exports both :results output :eval no
+C0 |> .to.integer()
+C1 |> .to.integer()
+C2 |> .to.integer()
+C3 |> .to.integer()
+#+end_src
+
+#+RESULTS:
+: [1] 0
+: [1] 1
+: [1] 2
+: [1] 3
+
+** Switching between worlds: ~.to.integer~
+#+begin_src R :session :exports code :eval no
+`.to.integer`<- \(n) n(\(x) x+1)(0)
+#+end_src
+\pause
+\vspace{-0.5cm}
+\begin{eqnarray*}
+    \underbrace{(\lambda f.\lambda x. x)}_{\scriptsize n=C_0}\underbrace{(\lambda x.x+1)}_f \underbrace{(0)}_x & \betared & 0 \\[2mm]
+\pause
+    \underbrace{(\lambda f.\lambda x. f(x))}_{\scriptsize n=C_1}(\lambda x.x+1)(0) & \betared & \underbrace{(\lambda x.x+1)}_f\underbrace{(0)}_x \\
+\pause
+     & \betared & 1 \\[2mm]
+\pause
+    \bigl(\underbrace{(\lambda f.\lambda x. f(f(x)))}_{\scriptsize n=C_2}(\lambda x.x+1)\bigr)(0) & \betared & \underbrace{(\lambda x.x+1)}_f\underbrace{(\lambda x.x+1)}_f\underbrace{(0)}_x \\
+\pause
+                                                                                                         & \betared & \underbrace{(\lambda x.(\lambda x.x+1)+1)}_{f(f(x))}\underbrace{(0)}_x \\
+\pause
+    & \betared & 2 
+\end{eqnarray*}
+
+** Arithmetic
+\pause
+- successor
+
+    $$ {\tt succ} \bydefn \lambda n.\lambda f.\lambda x. f((nf)x)$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    succ(C0) |> .to.integer()
+    succ(C10) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 1
+    : [1] 11
+    #+LATEX: }
+
+\pause
+- predecessor
+
+  \begin{eqnarray*}
+    {\tt pred} &\bydefn& \lambda n.\lambda n(\lambda p. \lambda z.z({\tt succ}(p(T)))(p(T)))(\lambda z.z(C_0)(C_0))(F) 
+  \end{eqnarray*}
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    pred(C1) |> .to.integer()
+    pred(C10) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 0
+    : [1] 9
+    #+LATEX: }
+
+** Arithmetic
+\pause
+- addition
+
+    $$ {\tt add} \bydefn \lambda n.\lambda m.(m\,{\tt succ})n$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    add(C0)(C1) |> .to.integer()
+    add(C1)(C2) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 1
+    : [1] 3
+    #+LATEX: }
+
+\pause
+- subtraction
+
+  $$ {\tt sub} \bydefn \lambda n.\lambda m.(m\,\mbox{pred})n$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    sub(C1)(C1) |> .to.integer()
+    sub(C2)(C1) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 0
+    : [1] 1
+    #+LATEX: }
+
+** Arithmetic
+\pause
+- multiplication
+
+    $$ {\tt mul} \bydefn \lambda n.\lambda m.m({\tt add} n)C_0$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    mul(C0)(C1) |> .to.integer()
+    mul(C1)(C2) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 0
+    : [1] 2
+    #+LATEX: }
+
+\pause
+- exponentiation
+
+    $$ {\tt exp} \bydefn \lambda n.\lambda m.mn$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    exp(C2)(C1) |> .to.integer()
+    exp(C2)(C2) |> .to.integer()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 2
+    : [1] 4
+    #+LATEX: }
+
+** Comparisons
+\pause
+- is-zero
+
+    $$ {\tt zerop?} \bydefn \lambda n.n(\lambda m.F)T$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    `zerop?`(C0) |> .to.logical()
+    `zerop?`(C1) |> .to.logical()
+    `zerop?`(C2) |> .to.logical()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] TRUE
+    : [1] FALSE
+    : [1] FALSE
+    #+LATEX: }
+
+\pause
+- less-than-or-equal
+
+    $$ {\tt le} \bydefn \lambda n.\lambda m.{\tt zerop?}({\tt sub}(n)(m))$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    le(C1)(C1) |> .to.logical()
+    le(C1)(C2) |> .to.logical()
+    le(C2)(C1) |> .to.logical()
+    #+end_src
+
+    #+RESULTS:
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] TRUE
+    : [1] TRUE
+    : [1] FALSE
+    #+LATEX: }
+
+** Comparisons
+\pause
+- is-equal
+
+    $$ {\tt eq} \bydefn \lambda n.\lambda m.{\tt and}({\tt le}(n)(m))({\tt le}(n)(m))$$
+
+\pause
+    #+begin_src R :session :exports both :results output :eval no
+    eq(C1)(C1) |> .to.logical()
+    eq(C1)(C2) |> .to.logical()
+    eq(C2)(C1) |> .to.logical()
+    eq(C2)(C2) |> .to.logical()
+    #+end_src
+
+    #+LATEX: {\tiny
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] TRUE
+    : [1] FALSE
+    : [1] FALSE
+    : [1] TRUE
+    #+LATEX: }
+
+** Recursion with the Y-Combinator
+\pause
+the Y-combinator: Curry's paradoxical combinator
+
+    $$ {\tt Y} \bydefn \lambda y.\bigl(\lambda x.y(xx)\bigr)\bigl(\lambda x.y(xx)\bigr) $$
+
+\pause
+apply $Y$ to an arbitrary function $F$
+\pause
+\begin{eqnarray*}
+    YF &=& \Big(\lambda y.\bigl(\lambda x.y(xx)\bigr)\bigl(\lambda x.y(xx)\bigr)\Big) F \\
+\pause
+       &=& \lambda [y:= F].\bigl(\lambda x.y(xx)\bigr)\bigl(\lambda x.y(xx)\bigr) \\
+\pause
+       &\betared& \bigl(\lambda x.F(xx)\bigr)\bigl(\lambda x.F(xx)\bigr)
+\pause
+       \;\;\textcolor{blue}{= YF} \\
+\pause
+       &=& \lambda [x:=\lambda x.F(xx)].F(xx) \\
+\pause
+       &\betared& F\textcolor{blue}{\bigl(\lambda x.F(xx)\bigr)\bigl(\lambda x.F(xx)\bigr)} \\
+\pause
+       &=& F(YF)
+\end{eqnarray*}
+
+\pause
+$x$ in $F x = x$ is called a /fixed point/ of $F$
+
+\pause
+$x$ ends up back at $x$ when $F$ is applied to $x$
+
+** Infinite loop
+\pause
+\vspace{-0.5cm}
+\begin{eqnarray*}
+    YI &=& I(YI) \\
+\pause
+       &=& (\lambda x.x) \bigl(Y (\lambda x.x)\bigr) \\
+\pause
+       & & \lambda [x:= Y (\lambda x.x)].x \\
+\pause
+       &\betared&  Y (\lambda x.x) \\ 
+\pause
+       &=&  Y I 
+\end{eqnarray*}
+
+\pause
+    #+begin_src R :session *R* :exports both :results output :eval no
+    (\(y) (\(x) y(x(x))) (\(x) y(x(x)))) (\(x) x)
+    #+end_src
+
+\pause
+    #+RESULTS:
+    #+LATEX: \vspace{-0.5cm}
+    : Error: C stack usage  9522372 is too close to the limit
+
+** Arithmetic series
+\pause
+    \begin{eqnarray*}
+        S_n = \sum_{i=0}^{i=n} i
+\pause
+            &=&
+            \begin{cases}
+                S_0 &= 0 \\
+                S_n &= n + S_{n-1}
+            \end{cases}
+    \end{eqnarray*}
+
+\pause
+\begin{align*}
+    F &\bydefn \lambda r.\lambda n.\mbox{\tt IF}(\mbox{\tt `zerop?`}n) (C_0) \bigl(\mbox{\tt add}(n)(r(\mbox{\tt pred}n))\bigr)
+\end{align*}
+
+\pause
+\vspace{-0.5cm}
+\begin{align*}
+    YFC_3 &\betared F(YF)C_3
+\end{align*}
+
+\pause
+    #+begin_src R :session *R* :exports both :results output :eval no
+    F<- (\(r) \(n) IF(`zerop?`(n)) (C0) (add(n)(r(pred(n))))) 
+
+    Y(F)(C3) |> .to.integer()
+    #+end_src
+
+\pause
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 6
+
+** Arithmetic series
+    #+begin_src R :session *R* :exports both :results output :eval no
+    F<- (\(r) \(n) IF(`zerop?`(n)) (C0) (add(n)(r(pred(n))))) 
+
+    Y(F)(C3) |> .to.integer()
+    #+end_src
+
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 6
+
+** Arithmetic series
+    #+begin_src R :session *R* :exports both :results output :eval no
+    Y((\(r) \(n) IF(`zerop?`(n)) (C0) (add(n)(r(pred(n))))))(C3) |> .to.integer()
+    #+end_src
+
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 6
+
+** Arithmetic series
+    #+begin_src R :session *R* :exports both :results output :eval no
+    (\(y) (\(x) y(x(x))) (\(x) y(x(x)))) (
+        \(r) \(n) IF(`zerop?`(n)) (C0) (add(n)(r(pred(n))))) (C3) |> .to.integer()
+    #+end_src
+
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 6
+
+** Arithmetic series
+    #+begin_src R :session *R* :exports both :results output :eval no
+    (\(y) (\(x) y(x(x))) (\(x) y(x(x)))) (
+        (\(r) \(n) (
+            \(p) \(x) \(y) p(x)(y)) (
+                (\(n) n(\(m) \(x) \(y) y)(\(x) \(y) x))(n)) (
+                    \(f) \(x) x) ((\(n) \(m) m(\(n) \(f) \(x) f(n(f)(x)))(n))(n)(
+                        r((\(n) n(\(p) \(z) z((\(n) \(f) \(x) f(n(f)(x)))(p(\(x) \(y) x)))(
+                            p(\(x) \(y) x)))(\(z) z(\(f) \(x) x)(\(f) \(x) x))(
+                                \(x) \(y) y))(n)))))) (\(f) \(x) f(f(f(x)))) |> .to.integer() 
+    #+end_src
+
+    #+LATEX: \vspace{-0.5cm}
+    #+RESULTS:
+    : [1] 6
+
+** Fibonacci: R
+\pause
+    \begin{align*}
+        F_n &=
+            \begin{cases}
+                F_0 &= 0 \\
+                F_1 &= 1 \\
+                F_n &= F_{n-1}+F_{n-2} 
+            \end{cases}
+    \end{align*}
+
+\pause
+#+begin_src R :session *R* :exports both :results output :eval no
+Y(\(r) \(n)
+    `zerop?`(n)(C0)
+    (`IF`(eq(n)(C1))
+	(C1)
+	(\(x) add (r( sub(n)(C1) )) (r( sub(n)(C2) )) (x)))) -> fibonacci
+
+lapply(list(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10),
+       \(n) cat(sprintf("%+2s: %+3s\n", n |> .to.integer(), fibonacci(n) |> .to.integer())))
+           -> dev.null
+#+end_src
+
+#+LATEX: {\tiny
+#+LATEX: \vspace{-0.5cm}
+#+RESULTS:
+#+begin_example
+    0:   0
+    1:   1
+    2:   1
+    3:   2
+    4:   3
+    5:   5
+    6:   8
+    7:  13
+    8:  21
+    9:  34
+   10:  55
+#+end_example
+#+LATEX: }
+
 * References 
  
 #+BIBLIOGRAPHY: /home/tharte/dot/include/refs cell limit:t
